@@ -1,0 +1,1980 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Histology Study Guide | FullMark</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07090f;--surface:#0d1117;--surface2:#161b27;--surface3:#1e2738;--border:#252f45;--accent:#38bdf8;--accent2:#fb923c;--accent3:#4ade80;--accent4:#facc15;--accent5:#f472b6;--text:#e2e8f0;--text-muted:#64748b;--text-dim:#94a3b8;--radius:14px;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+.header{background:linear-gradient(135deg,#07090f 0%,#0d1525 50%,#07090f 100%);border-bottom:1px solid var(--border);padding:48px 24px 36px;text-align:center;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(56,189,248,0.07),transparent 70%);}
+.header h1{font-family:'Syne',sans-serif;font-size:clamp(26px,5vw,48px);font-weight:800;background:linear-gradient(135deg,#fff 30%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.15;margin-bottom:10px;position:relative;z-index:1;}
+.header-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent);border:1px solid rgba(56,189,248,0.3);padding:5px 16px;border-radius:20px;margin-bottom:18px;background:rgba(56,189,248,0.06);position:relative;z-index:1;}
+.header-sub{color:var(--text-muted);font-size:14px;margin-bottom:24px;position:relative;z-index:1;}
+.header-stats{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:0;position:relative;z-index:1;}
+.stat{background:var(--surface2);border:1px solid var(--border);padding:10px 20px;border-radius:10px;font-size:12px;color:var(--text-dim);}
+.stat strong{display:block;font-size:20px;font-weight:700;color:var(--accent);font-family:'Syne',sans-serif;}
+.nav-wrap{position:sticky;top:0;z-index:100;background:rgba(7,9,15,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 16px;}
+.nav-scroll{display:flex;gap:4px;overflow-x:auto;padding:12px 0;scrollbar-width:none;max-width:1200px;margin:0 auto;}
+.nav-scroll::-webkit-scrollbar{display:none;}
+.nav-btn{flex-shrink:0;background:transparent;border:1px solid transparent;color:var(--text-muted);padding:8px 18px;border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;transition:all 0.25s;white-space:nowrap;}
+.nav-btn:hover{color:var(--text);border-color:var(--border);}
+.nav-btn.active{background:var(--surface3);border-color:var(--accent);color:var(--accent);font-weight:600;}
+.main{max-width:1100px;margin:0 auto;padding:32px 16px 80px;}
+.lecture-page{display:none;}.lecture-page.active{display:block;animation:fadeUp 0.35s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.lec-header{background:linear-gradient(135deg,var(--surface2),var(--surface3));border:1px solid var(--border);border-radius:var(--radius);padding:28px 32px;margin-bottom:28px;position:relative;overflow:hidden;}
+.lec-header::after{content:'';position:absolute;left:-20px;top:-20px;width:180px;height:180px;background:radial-gradient(circle,rgba(56,189,248,0.06),transparent 70%);border-radius:50%;pointer-events:none;}
+.lec-num{font-size:11px;font-weight:600;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:6px;}
+.lec-title{font-family:'Syne',sans-serif;font-size:clamp(18px,3vw,26px);font-weight:800;color:#fff;margin-bottom:6px;}
+.lec-desc{font-size:13px;color:var(--text-muted);line-height:1.6;}
+.tab-switch{display:flex;gap:6px;margin-bottom:24px;flex-wrap:wrap;}
+.tab-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text-muted);padding:9px 20px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:500;transition:all 0.25s;}
+.tab-btn:hover{border-color:var(--accent);color:var(--text);}
+.tab-btn.active{background:var(--accent);border-color:var(--accent);color:#000;font-weight:700;}
+.tab-content{display:none;}.tab-content.active{display:block;animation:fadeUp 0.3s ease;}
+.topic-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:16px;position:relative;overflow:hidden;}
+.topic-block::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--accent),transparent);}
+.topic-block.orange::before{background:linear-gradient(180deg,var(--accent2),transparent);}
+.topic-block.green::before{background:linear-gradient(180deg,var(--accent3),transparent);}
+.topic-block.yellow::before{background:linear-gradient(180deg,var(--accent4),transparent);}
+.topic-block.pink::before{background:linear-gradient(180deg,var(--accent5),transparent);}
+.topic-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--accent);margin-bottom:14px;}
+.topic-title.orange{color:var(--accent2);}.topic-title.green{color:var(--accent3);}.topic-title.yellow{color:var(--accent4);}.topic-title.pink{color:var(--accent5);}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-bottom:12px;}
+.info-card{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+.info-label{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;}
+.info-value{font-size:13px;color:var(--text-dim);line-height:1.6;}.info-value strong{color:var(--text);font-weight:600;}
+.detail-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.detail-list li{padding:10px 14px;background:var(--surface2);border-radius:8px;border-left:3px solid var(--border);font-size:13px;color:var(--text-dim);line-height:1.65;direction:ltr;text-align:left;}
+.detail-list li strong{color:var(--text);}.detail-list li.hl{border-left-color:var(--accent);}
+.detail-list li.hl-o{border-left-color:var(--accent2);}.detail-list li.hl-g{border-left-color:var(--accent3);}.detail-list li.hl-y{border-left-color:var(--accent4);}
+.note-box{background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.2);border-radius:10px;padding:14px 16px;margin-top:12px;font-size:13px;color:var(--text-dim);line-height:1.7;direction:ltr;text-align:left;}
+.note-box.orange{background:rgba(251,146,60,0.06);border-color:rgba(251,146,60,0.2);}
+.note-box.green{background:rgba(74,222,128,0.06);border-color:rgba(74,222,128,0.2);}
+.note-box.yellow{background:rgba(250,204,21,0.06);border-color:rgba(250,204,21,0.2);}
+.note-box.pink{background:rgba(244,114,182,0.06);border-color:rgba(244,114,182,0.2);}
+.note-box strong{color:var(--accent);}.note-box.orange strong{color:var(--accent2);}.note-box.green strong{color:var(--accent3);}.note-box.yellow strong{color:var(--accent4);}
+.phys-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12px;}
+.phys-table th{background:var(--surface3);color:var(--accent);font-weight:600;padding:9px 12px;text-align:left;}
+.phys-table td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text-dim);vertical-align:top;line-height:1.5;direction:ltr;text-align:left;}
+.phys-table tr:hover td{background:var(--surface2);}.phys-table td strong{color:var(--text);}
+/* MIND MAP */
+.mm-center{display:inline-block;background:linear-gradient(135deg,var(--accent),#0ea5e9);color:#000;font-weight:800;font-size:15px;font-family:'Syne',sans-serif;padding:14px 32px;border-radius:50px;margin-bottom:28px;box-shadow:0 0 40px rgba(56,189,248,0.3);}
+.mm-branches{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:20px;}
+.mm-branch{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:16px 20px;min-width:190px;max-width:270px;text-align:left;}
+.mm-branch.b1{border-top:2px solid var(--accent);}.mm-branch.b2{border-top:2px solid var(--accent2);}
+.mm-branch.b3{border-top:2px solid var(--accent3);}.mm-branch.b4{border-top:2px solid var(--accent4);}.mm-branch.b5{border-top:2px solid var(--accent5);}
+.mm-branch-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;margin-bottom:10px;}
+.b1 .mm-branch-title{color:var(--accent);}.b2 .mm-branch-title{color:var(--accent2);}.b3 .mm-branch-title{color:var(--accent3);}.b4 .mm-branch-title{color:var(--accent4);}.b5 .mm-branch-title{color:var(--accent5);}
+.mm-leaf{font-size:12px;color:var(--text-muted);padding:4px 8px;background:var(--surface3);border-radius:5px;margin-bottom:4px;line-height:1.5;direction:ltr;text-align:left;}
+/* KEY POINTS */
+.kp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px;}
+.kp-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;position:relative;overflow:hidden;}
+.kp-num{position:absolute;top:12px;right:14px;font-family:'Syne',sans-serif;font-size:30px;font-weight:800;color:rgba(255,255,255,0.04);line-height:1;}
+.kp-badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:5px;margin-bottom:10px;}
+.kp-badge.bl{background:rgba(56,189,248,0.12);color:var(--accent);}.kp-badge.or{background:rgba(251,146,60,0.12);color:var(--accent2);}
+.kp-badge.gr{background:rgba(74,222,128,0.12);color:var(--accent3);}.kp-badge.ye{background:rgba(250,204,21,0.12);color:var(--accent4);}
+.kp-badge.pk{background:rgba(244,114,182,0.12);color:var(--accent5);}
+.kp-text{font-size:13px;color:var(--text-dim);line-height:1.7;direction:ltr;text-align:left;}.kp-text strong{color:var(--text);}
+/* ZATONA — like Physiology */
+.zt-header{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding:16px 18px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.2);border-radius:12px;}
+.zt-emoji{font-size:36px;flex-shrink:0;}
+.zt-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--accent3);margin-bottom:3px;}
+.zt-sub{font-size:12px;color:var(--text-muted);}
+.zt-card{background:var(--surface);border:1px solid rgba(74,222,128,0.2);border-radius:12px;padding:18px 20px;margin-bottom:12px;position:relative;overflow:hidden;}
+.zt-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--accent3),var(--accent4));}
+.zt-q{font-size:13px;font-weight:600;color:var(--accent3);margin-bottom:10px;display:flex;flex-direction:row-reverse;gap:8px;align-items:flex-start;line-height:1.6;direction:rtl;text-align:right;}
+.zt-q-icon{flex-shrink:0;width:20px;height:20px;background:rgba(74,222,128,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;margin-top:2px;}
+.zt-q-text{direction:rtl;text-align:right;unicode-bidi:plaintext;}
+.zt-arrow{display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:flex-start;margin-bottom:8px;padding:10px 14px;background:rgba(250,204,21,0.06);border:1px solid rgba(250,204,21,0.15);border-radius:8px;}
+.zt-arrow-icon{color:var(--accent4);font-size:16px;padding-top:1px;}
+.zt-arrow-text{font-size:13px;color:var(--text-dim);line-height:1.75;direction:ltr;text-align:left;}
+.zt-arrow-text strong{color:var(--accent4);}
+.zt-note{font-size:12px;color:var(--text-muted);margin-top:8px;padding:8px 12px;background:rgba(56,189,248,0.05);border-radius:7px;line-height:1.75;direction:rtl;text-align:right;unicode-bidi:plaintext;}
+/* MCQ */
+.mcq-header{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:18px 22px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.mcq-stats-row{display:flex;gap:20px;align-items:center;flex-wrap:wrap;}
+.mcq-stat{font-size:13px;color:var(--text-muted);}.mcq-stat span{font-weight:700;color:var(--accent);font-family:'Syne',sans-serif;}
+.progress-bar{height:4px;background:var(--surface3);border-radius:2px;overflow:hidden;flex:1;min-width:120px;}
+.progress-fill{height:100%;background:var(--accent);border-radius:2px;transition:width 0.4s ease;width:0%;}
+.mcq-controls{display:flex;gap:8px;}
+.ctrl-btn{background:var(--surface3);border:1px solid var(--border);color:var(--text-dim);padding:8px 16px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif;transition:all 0.2s;}
+.ctrl-btn:hover{border-color:var(--accent);color:var(--accent);}
+.ctrl-btn.primary{background:var(--accent);color:#000;border-color:var(--accent);}
+.mcq-q{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:14px;transition:border-color 0.3s;}
+.mcq-q.correct{border-color:var(--accent3);}.mcq-q.wrong{border-color:#f87171;}
+.q-top{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;}
+.q-num{flex-shrink:0;width:28px;height:28px;background:var(--surface3);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--accent);font-family:'Syne',sans-serif;}
+.q-text{font-size:14px;color:var(--text);line-height:1.6;font-weight:500;direction:ltr;text-align:left;}
+.options{display:flex;flex-direction:column;gap:8px;}
+.option{display:flex;align-items:center;gap:12px;padding:11px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:9px;cursor:pointer;transition:all 0.2s;}
+.option:hover{border-color:var(--accent);background:rgba(56,189,248,0.05);}
+.opt-l{width:24px;height:24px;flex-shrink:0;background:var(--surface3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--text-muted);font-family:'Syne',sans-serif;}
+.option span.opt-text{font-size:13px;color:var(--text-dim);direction:ltr;text-align:left;}
+.option.correct-a{background:rgba(74,222,128,0.1);border-color:var(--accent3);}
+.option.correct-a .opt-l{background:var(--accent3);color:#000;}
+.option.wrong-a{background:rgba(248,113,113,0.1);border-color:#f87171;}
+.option.wrong-a .opt-l{background:#f87171;color:#000;}
+.expl{display:none;margin-top:12px;padding:12px 16px;background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.15);border-radius:9px;font-size:13px;color:var(--text-dim);line-height:1.6;direction:ltr;text-align:left;}
+.expl.show{display:block;}
+.score-board{display:none;text-align:center;background:linear-gradient(135deg,var(--surface2),var(--surface3));border:1px solid var(--border);border-radius:var(--radius);padding:40px 24px;margin-top:20px;}
+.score-board.show{display:block;animation:fadeUp 0.4s ease;}
+.score-num{font-family:'Syne',sans-serif;font-size:56px;font-weight:800;color:var(--accent);}
+.score-msg{font-size:16px;color:var(--text-dim);margin:10px 0 24px;}
+/* LOCK */
+#lockScreen{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:20px;overflow-y:auto;}
+.lock-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:40px 36px;max-width:460px;width:100%;position:relative;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,0.4);}
+.lock-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent3));}
+.fm-name{font-family:'Syne',sans-serif;font-size:clamp(32px,7vw,44px);font-weight:800;line-height:1;color:var(--accent);text-align:center;letter-spacing:-0.5px;text-shadow:0 0 24px rgba(56,189,248,0.35);}
+.fm-tagline{font-size:11px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-muted);text-align:center;margin-top:10px;margin-bottom:28px;}
+.lock-badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);border:1px solid rgba(56,189,248,0.3);padding:5px 16px;border-radius:20px;margin-bottom:16px;background:rgba(56,189,248,0.06);}
+.lock-title{font-family:'Syne',sans-serif;font-size:clamp(19px,3.5vw,26px);font-weight:700;background:linear-gradient(135deg,#fff 30%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.3;margin-bottom:8px;}
+.lock-sub{color:var(--text-muted);font-size:13px;margin-bottom:24px;line-height:1.7;direction:rtl;text-align:center;}
+.lock-features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;}
+.lock-feat-list{display:flex;flex-direction:column;gap:8px;margin-bottom:24px;}
+.lock-feat-row{display:flex;gap:11px;align-items:flex-start;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+.lock-feat-icon{flex-shrink:0;font-size:15px;line-height:1.5;opacity:0.85;}
+.lock-feat-row-text{font-size:12px;color:var(--text-dim);line-height:1.6;direction:rtl;text-align:right;}
+.lock-feat-row-text strong{color:var(--text);font-family:'Syne',sans-serif;font-size:13px;font-weight:700;}
+.lock-feat{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:11px 13px;font-size:12px;color:var(--text-dim);line-height:1.5;}
+.lock-feat strong{display:block;color:var(--text);font-family:'Syne',sans-serif;font-size:14px;margin-bottom:2px;}
+.lock-divider{border:none;border-top:1px solid var(--border);margin:20px 0;}
+.pw-label{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;}
+.pw-wrap{display:flex;gap:8px;}
+.pw-input{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;padding:13px 16px;outline:none;transition:border-color 0.25s;letter-spacing:2px;direction:ltr;text-align:center;}
+.pw-input:focus{border-color:var(--accent);}
+.pw-input.error{border-color:#f87171;animation:shake 0.4s ease;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-6px);}75%{transform:translateX(6px);}}
+.pw-btn{background:var(--accent);color:#000;border:none;border-radius:10px;padding:13px 22px;font-family:'Syne',sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:all 0.25s;white-space:nowrap;}
+.pw-btn:hover{background:#7dd3fc;}.pw-btn:disabled{opacity:.6;cursor:not-allowed;}
+.pw-error{font-size:12px;color:#f87171;margin-top:8px;display:none;}.pw-error.show{display:block;}
+/* SUB MODAL */
+#subModal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.7);display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);}
+#subModal.open{display:flex;}
+.sub-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px 32px;max-width:460px;width:100%;position:relative;max-height:90vh;overflow-y:auto;box-shadow:0 30px 80px rgba(0,0,0,0.7);}
+.sub-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent3),var(--accent),var(--accent2));}
+.sub-close{position:absolute;top:14px;left:14px;background:var(--surface2);border:1px solid var(--border);color:var(--text-muted);border-radius:8px;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;}
+.sub-close:hover{color:var(--text);}
+.sub-step{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;}
+.sub-step-num{flex-shrink:0;width:26px;height:26px;background:var(--accent);color:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;font-family:'Syne',sans-serif;}
+.sub-step-text{font-size:13px;color:var(--text-dim);line-height:1.6;direction:rtl;text-align:right;}
+.sub-step-text strong{color:var(--text);display:block;margin-bottom:2px;}
+@media(max-width:600px){.lec-header{padding:20px;}.info-grid{grid-template-columns:1fr;}.kp-grid{grid-template-columns:1fr;}.mm-branches{flex-direction:column;align-items:center;}.lock-card{padding:28px 20px;}}
+
+/* ===== PRINT BUTTON (screen only) ===== */
+.print-fab{position:fixed;bottom:24px;left:24px;z-index:9001;width:50px;height:50px;border-radius:50%;border:none;background:linear-gradient(135deg,#0f766e,#15b8a6);box-shadow:0 4px 20px rgba(15,118,110,0.45);cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;color:#fff;transition:transform 0.2s;}
+.print-fab:hover{transform:scale(1.06);}
+
+/* ===== PRINT AREA (hidden on screen) ===== */
+.print-watermark{display:none;}
+.print-signature{display:none;}
+#printArea{display:none;}
+
+@media print{
+  @page{ margin:15mm 14mm; }
+  html, body{
+    background:#fff !important; color:#1a1a1a !important; font-size:14.5px;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  body::before{display:none !important;}
+  #lockScreen, #subModal, .header, .nav-wrap, .main, .print-fab,
+  button[onclick="toggleAthkar()"], #athkarPanel{display:none !important;}
+  #printArea{display:block !important; max-width:none; color:#1a1a1a; line-height:1.55; position:relative; z-index:1;}
+
+  /* faint repeating text watermark */
+  .print-watermark{
+    display:block; position:fixed; top:50%; left:50%;
+    transform:translate(-50%,-50%) rotate(-20deg);
+    font-family:'Syne',sans-serif; font-weight:800; font-size:64px; color:#0f766e;
+    opacity:.06; z-index:0; pointer-events:none; white-space:nowrap;
+  }
+  /* platform signature — repeats on every printed page */
+  .print-signature{
+    display:block; position:fixed; bottom:8mm; left:0; right:0; text-align:center;
+    font-family:'Syne',sans-serif; font-size:10px; letter-spacing:2px; color:#0f766e; z-index:2;
+  }
+
+  .print-header{text-align:center; margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid #0f766e;}
+  .print-brand{font-family:'SF Mono','Courier New',monospace; font-size:.72rem; letter-spacing:2px; text-transform:uppercase; color:#0f766e; margin-bottom:3px;}
+  .print-header h1{font-family:Georgia,'Times New Roman',serif; font-size:1.4rem; color:#111;}
+  .print-sub{font-family:'Segoe UI',Tahoma,Arial,sans-serif; direction:rtl; color:#444; font-size:.88rem; margin-top:2px;}
+
+  .print-section{margin-bottom:18px; position:relative; z-index:1;}
+  .print-h2{font-family:Georgia,'Times New Roman',serif; font-size:1.12rem; color:#0f766e; border-bottom:1px solid #ccc; padding-bottom:6px; margin-bottom:12px; page-break-after:avoid; break-after:avoid;}
+
+  .print-note{background:#fdf6e3 !important; border:1px solid #c68010 !important; color:#5c4711 !important; border-radius:8px; padding:10px 14px; font-size:.85rem; margin-bottom:14px; direction:rtl; text-align:right; page-break-inside:avoid;}
+
+  /* content blocks (.topic-block) */
+  .topic-block{background:none !important; border:none !important; border-left:2px solid #0f766e !important; border-radius:0 !important; padding:0 0 10px 10px !important; margin-bottom:12px !important; border-bottom:1px solid #eee !important;}
+  .topic-block:last-child{border-bottom:none !important;}
+  .topic-title{color:#0f766e !important; font-size:1rem; margin-bottom:7px; page-break-after:avoid; break-after:avoid;}
+  .detail-list{gap:4px !important;}
+  .detail-list li{background:none !important; border-left:2px solid #ccc !important; color:#1a1a1a !important; font-size:.88rem; padding:4px 10px !important; direction:ltr; text-align:left;}
+  .detail-list li.hl{border-left-color:#0f766e !important;}
+  .detail-list li.hl-o{border-left-color:#c68010 !important;}
+  .detail-list li.hl-g{border-left-color:#1f9c6e !important;}
+  .detail-list li.hl-y{border-left-color:#a08000 !important;}
+  .detail-list li strong{color:#111 !important;}
+  .note-box{background:#f7f7f7 !important; border:1px solid #ccc !important; color:#333 !important; font-size:.85rem; page-break-inside:avoid; break-inside:avoid;}
+  .note-box strong{color:#0f766e !important;}
+
+  /* tables */
+  .phys-table{width:100%; font-size:.82rem; border-collapse:collapse;}
+  .phys-table th{background:#e6fbf7 !important; color:#0f766e !important; padding:6px 8px; text-align:left;}
+  .phys-table td{color:#333 !important; border-bottom:1px solid #ddd !important; padding:6px 8px; vertical-align:top;}
+  .phys-table tr{page-break-inside:avoid; break-inside:avoid;}
+
+  /* quiz — printed WITHOUT answers */
+  .print-mcq-item{margin-bottom:9px; page-break-inside:avoid; break-inside:avoid; font-size:.9rem; direction:ltr; text-align:left;}
+  .print-q{font-weight:700; color:#111; margin-bottom:3px;}
+  .print-opts{padding-right:0; padding-left:12px;}
+  .print-opt{color:#333; margin-bottom:1px;}
+}
+</style>
+</head>
+<body>
+
+<!-- LOCK SCREEN -->
+<div id="lockScreen">
+  <div class="lock-card">
+    <div style="text-align:center;margin-bottom:28px;">
+      <div class="fm-name">𝓕𝓾𝓵𝓵𝓜𝓪𝓻𝓴</div>
+      <div class="fm-tagline">منصة التفوق الأكاديمي</div>
+    </div>
+    <div style="text-align:center;margin-bottom:28px;">
+      <div class="lock-badge">Mansoura National University · Histology Department</div>
+      <div class="lock-title">General Histology — BCMS-126</div>
+    </div>
+    <div style="margin-bottom:14px;">
+      <button onclick="document.getElementById('subModal').classList.add('open')" style="width:100%;background:linear-gradient(135deg,var(--accent3),#16a34a);color:#000;border:none;border-radius:10px;padding:13px;font-family:'Syne',sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">تفاصيل الاشتراك</button>
+    </div>
+    <div class="pw-label">كود التفعيل</div>
+    <div class="pw-wrap">
+      <input class="pw-input" type="text" id="pwInput" placeholder="مثال: HI-7K2M9X" maxlength="30" autocomplete="off">
+      <button class="pw-btn" id="fmActivateBtn">دخول →</button>
+    </div>
+    <div class="pw-error" id="pwError"></div>
+    <div id="fmGateLoading" style="display:none;text-align:center;font-size:12px;color:rgba(148,163,184,0.8);margin-top:10px;">⏳ جاري التحقق...</div>
+  </div>
+</div>
+
+<!-- SUBSCRIBE MODAL -->
+<div id="subModal">
+  <div class="sub-card" style="max-width:480px;">
+    <div class="sub-close" onclick="document.getElementById('subModal').classList.remove('open')">✕</div>
+    <div style="text-align:center;margin-bottom:20px;">
+      <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;color:rgba(56,189,248,0.5);margin-bottom:4px;">4.0 GPA</div>
+      <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;background:linear-gradient(135deg,#fff,#38bdf8 60%,#4ade80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">FullMark</div>
+      <div style="display:inline-block;margin-top:10px;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent3);border:1px solid rgba(74,222,128,0.3);padding:5px 16px;border-radius:20px;background:rgba(74,222,128,0.06);">الاشتراك في المذكرة</div>
+      <div style="font-family:'Syne',sans-serif;font-size:19px;font-weight:800;color:#fff;margin-top:10px;direction:rtl;">مذكرة General Histology — BCMS-126 🔬</div>
+    </div>
+    <div style="background:linear-gradient(135deg,rgba(74,222,128,0.12),rgba(56,189,248,0.08));border:2px solid rgba(74,222,128,0.4);border-radius:16px;padding:20px 24px;margin-bottom:16px;text-align:center;">
+      <div style="font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent3);margin-bottom:8px;">السعر</div>
+      <div style="font-family:'Syne',sans-serif;font-size:52px;font-weight:800;color:#4ade80;line-height:1;margin-bottom:8px;text-shadow:0 0 24px rgba(74,222,128,0.4);">150 جنيه</div>
+      <div style="font-size:13px;color:var(--accent3);font-weight:600;">✅ مرة واحدة فقط — بدون تجديد</div>
+    </div>
+    <div style="background:rgba(56,189,248,0.05);border:1px solid rgba(56,189,248,0.15);border-radius:12px;padding:16px 18px;margin-bottom:20px;font-size:13px;color:var(--text-dim);line-height:1.9;direction:rtl;text-align:right;">
+      حرصت <strong style="color:var(--text);">FullMark</strong> على إعداد هذه المذكرة بأعلى معايير الدقة العلمية والتنظيم، عبر <strong style="color:var(--text);">مراجعة وتدقيق مكثّف</strong> لكل جزء من المحتوى قبل نشره. 💪<br><br>
+      كل فصل مُعَدّ من الصفر ليشمل: <strong style="color:var(--accent);">شرح مفصّل</strong> يغطي كل نقطة في المقرر، <strong style="color:var(--accent2);">خريطة ذهنية</strong> تربط المعلومات ببعضها، <strong style="color:var(--accent3);">زتونة</strong> لأهم أسئلة الامتحان المتوقعة، <strong style="color:var(--accent4);">أهم النقاط</strong> للمراجعة السريعة، و<strong style="color:var(--accent5);">اختبار MCQ تفاعلي</strong> بـ 30 سؤال لكل فصل — <strong style="color:var(--text);">كل ذلك ضمن منصة واحدة متكاملة، بتصميم احترافي يعمل على أي جهاز.</strong><br><br>
+      السعر يعكس <strong style="color:var(--accent2);">الجهد والتكلفة الفعلية</strong> وراء تطوير المحتوى والمنصة، وهدفنا أن نمنحك تجربة مذاكرة عالية الجودة بأقل مجهود ممكن. 🎯<br><br>
+      نسأل الله لكم التوفيق والسداد. 🤲
+    </div>
+    <div class="lock-feat-list">
+      <div class="lock-feat-row"><span class="lock-feat-icon">📖</span><div class="lock-feat-row-text"><strong>5 فصول كاملة</strong> — شرح مفصّل لكل نقطة في المنهج، من الألف للياء</div></div>
+      <div class="lock-feat-row o"><span class="lock-feat-icon">🧠</span><div class="lock-feat-row-text"><strong>خرائط ذهنية</strong> — تلخيص بصري يربطلك أفكار كل فصل ببعض بسهولة</div></div>
+      <div class="lock-feat-row y"><span class="lock-feat-icon">🫒</span><div class="lock-feat-row-text"><strong>زتونة</strong> — أسئلة الامتحان المتوقعة، وأسلوب الإجابة عليها بالظبط</div></div>
+      <div class="lock-feat-row g"><span class="lock-feat-icon">❓</span><div class="lock-feat-row-text"><strong>150 سؤال MCQ</strong> — اختبر نفسك تفاعليًا بعد كل فصل مع الشرح الكامل للإجابة</div></div>
+    </div>
+    <div style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;direction:rtl;text-align:right;">خطوات الاشتراك</div>
+    <div class="sub-step"><div class="sub-step-num">1</div><div class="sub-step-text"><strong>ادفع 150 جنيه — Vodafone Cash أو InstaPay</strong>الرقم: <strong style="color:var(--accent);font-size:15px;letter-spacing:1px;">01036119186</strong></div></div>
+    <div class="sub-step" style="border-color:rgba(56,189,248,0.5);background:rgba(56,189,248,0.08);"><div class="sub-step-num" style="background:#38bdf8;">2</div><div class="sub-step-text"><strong>⚠️ لازم دلوقتي — ابعت /start لبوت تليجرام</strong>البوت هو اللي هيبعتلك الكود، ولو ما بعتلوش الأول مش هيقدر يوصلك حتى لو دفعت<br><a href="https://t.me/FullmarkEg_bot" target="_blank" style="display:inline-block;margin-top:8px;background:#0088cc;color:#fff;border-radius:8px;padding:8px 16px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;text-decoration:none;">✈️ افتح @FullmarkEg_bot وابعت /start</a></div></div>
+    <div class="sub-step"><div class="sub-step-num">3</div><div class="sub-step-text"><strong>ارفع صورة الإيصال هنا مباشرةً</strong>واملأ اسمك ويوزر تليجرام بتاعك 📲</div></div>
+    <div class="sub-step"><div class="sub-step-num">4</div><div class="sub-step-text"><strong>استنى الكود على تليجرام ✅</strong>بيوصل خلال دقائق بإذن الله 🎉</div></div>
+
+    <!-- Upload Form -->
+    <div id="subFormWrap" style="margin-top:20px;">
+      <div style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;direction:rtl;text-align:right;">📋 بيانات الطلب</div>
+
+      <div style="margin-bottom:12px;">
+        <label style="display:block;font-size:12px;color:var(--text-muted);margin-bottom:6px;direction:rtl;text-align:right;">الاسم الكامل</label>
+        <input id="subName" type="text" placeholder="مثال: أحمد محمد علي" style="width:100%;padding:11px 14px;border-radius:10px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;direction:rtl;outline:none;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+      </div>
+
+      <div style="margin-bottom:12px;">
+        <label style="display:block;font-size:12px;color:var(--text-muted);margin-bottom:6px;direction:rtl;text-align:right;">يوزر تليجرام (هيوصله الكود) 📲</label>
+        <div style="background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.35);border-radius:8px;padding:8px 12px;margin-bottom:6px;font-size:12px;color:#f87171;direction:rtl;">
+          ⚠️ متأكد إنك بعت <strong>/start</strong> لـ <a href="https://t.me/FullmarkEg_bot" target="_blank" style="color:#f87171;font-weight:700;">@FullmarkEg_bot</a>؟ من غيرها الكود مش هيوصلك
+        </div>
+        <input id="subTelegram" type="text" placeholder="مثال: @ahmed_123" style="width:100%;padding:11px 14px;border-radius:10px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;direction:ltr;outline:none;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+      </div>
+
+      <div style="margin-bottom:16px;">
+        <label style="display:block;font-size:12px;color:var(--text-muted);margin-bottom:6px;direction:rtl;text-align:right;">صورة الإيصال</label>
+        <label id="fileLabel" style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:18px;border-radius:10px;border:2px dashed var(--border);background:var(--surface2);cursor:pointer;transition:border-color 0.2s;direction:rtl;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+          <span id="fileLabelText" style="font-size:13px;color:var(--text-muted);">📎 اضغط هنا لرفع صورة الإيصال</span>
+          <input id="subReceipt" type="file" accept="image/*" style="display:none;" onchange="fmFileChanged(this)">
+        </label>
+        <div id="subImgPreview" style="display:none;margin-top:10px;text-align:center;">
+          <img id="subImgThumb" src="" style="max-height:120px;border-radius:10px;border:1px solid var(--border);">
+        </div>
+      </div>
+
+      <div id="subFormError" style="display:none;background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.3);border-radius:8px;padding:10px 14px;font-size:13px;color:#f87171;direction:rtl;margin-bottom:12px;"></div>
+      <div id="subFormSuccess" style="display:none;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.3);border-radius:10px;padding:14px 16px;font-size:13px;color:#4ade80;direction:rtl;text-align:right;line-height:1.8;"></div>
+
+      <button id="subSubmitBtn" onclick="fmSubmitRequest()" style="width:100%;background:linear-gradient(135deg,var(--accent3),#16a34a);color:#000;border:none;border-radius:10px;padding:13px;font-family:'Syne',sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:opacity 0.2s;margin-top:4px;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+        إرسال الطلب ✉️
+      </button>
+    </div>
+
+    <div style="background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.2);border-radius:10px;padding:12px;font-size:12px;color:var(--text-muted);text-align:center;direction:rtl;margin-top:16px;">💬 <strong style="color:var(--accent);">مش قادر تدفع؟</strong> تواصل — ومتشيلش هم يا دكتور 🤍</div>
+    <a href="https://t.me/m84564694" target="_blank" style="display:block;margin-top:12px;background:linear-gradient(135deg,#0088cc,#006699);color:#fff;border-radius:10px;padding:13px;font-family:'Syne',sans-serif;font-weight:700;font-size:14px;text-align:center;text-decoration:none;">✈️ تواصل على تيليجرام</a>
+    <a href="https://t.me/+UTZ1jfha0kU1NDY8" target="_blank" style="display:block;margin-top:8px;background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.25);color:var(--accent);border-radius:10px;padding:13px;font-family:'Syne',sans-serif;font-weight:700;font-size:14px;text-align:center;text-decoration:none;">📢 جروب المنصة على تيليجرام</a>
+  </div>
+</div>
+
+<!-- Athkar Button -->
+<button onclick="toggleAthkar()" title="أذكار" style="position:fixed;bottom:24px;right:24px;z-index:9001;width:50px;height:50px;border-radius:50%;border:none;background:linear-gradient(135deg,#0ea5e9,#38bdf8);box-shadow:0 4px 20px rgba(56,189,248,0.45);cursor:pointer;font-size:22px;display:flex;align-items:center;justify-content:center;">☽</button>
+
+<!-- Athkar Panel -->
+<div id="athkarPanel" style="position:fixed;bottom:84px;right:24px;z-index:9000;width:290px;background:linear-gradient(160deg,#0d1117,#111827);border:1px solid rgba(56,189,248,0.25);border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,0.7);overflow:hidden;display:none;opacity:0;transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);">
+  <div style="background:rgba(56,189,248,0.08);padding:12px 16px;border-bottom:1px solid rgba(56,189,248,0.1);display:flex;align-items:center;justify-content:space-between;">
+    <button onclick="toggleAthkar()" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:#64748b;border-radius:7px;width:26px;height:26px;cursor:pointer;font-size:13px;">✕</button>
+    <div style="text-align:right;"><div style="font-size:10px;font-weight:600;letter-spacing:3px;color:#38bdf8;text-transform:uppercase;">أذكار المسلم</div><div id="athkarCategory" style="font-size:11px;color:#64748b;"></div></div>
+  </div>
+  <div style="padding:18px 16px 12px;min-height:100px;display:flex;flex-direction:column;justify-content:center;">
+    <div id="athkarText" style="font-size:16px;color:#f1f5f9;line-height:1.9;text-align:right;direction:rtl;transition:opacity 0.3s;"></div>
+    <div id="athkarRepeat" style="margin-top:8px;font-size:11px;color:#38bdf8;text-align:right;"></div>
+  </div>
+  <div style="padding:0 16px 12px;display:flex;align-items:center;gap:12px;flex-direction:row-reverse;">
+    <div style="position:relative;width:60px;height:60px;flex-shrink:0;">
+      <svg width="60" height="60" style="transform:rotate(-90deg);"><circle cx="30" cy="30" r="24" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="4"/><circle id="progressRing" cx="30" cy="30" r="24" fill="none" stroke="#38bdf8" stroke-width="4" stroke-dasharray="150" stroke-dashoffset="150" style="transition:stroke-dashoffset 0.4s ease;"/></svg>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><span id="athkarCount" style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#4ade80;">0</span></div>
+    </div>
+    <div style="flex:1;text-align:right;"><div id="athkarGoalLabel" style="font-size:11px;color:#64748b;margin-bottom:4px;direction:rtl;"></div><div id="athkarStatusMsg" style="font-size:12px;color:#94a3b8;direction:rtl;line-height:1.5;"></div></div>
+  </div>
+  <div style="padding:0 12px 12px;display:flex;gap:6px;flex-direction:row-reverse;">
+    <button onclick="incrementCount()" style="flex:1;background:linear-gradient(135deg,#0ea5e9,#38bdf8);color:#000;border:none;border-radius:10px;padding:11px;font-family:'Syne',sans-serif;font-weight:800;font-size:14px;cursor:pointer;" onmousedown="this.style.transform='scale(0.96)'" onmouseup="this.style.transform='scale(1)'" onmouseleave="this.style.transform='scale(1)'">سبّح</button>
+    <button onclick="nextAthkar()" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#94a3b8;border-radius:10px;padding:11px 12px;font-size:13px;cursor:pointer;">التالي ›</button>
+    <button onclick="resetCount()" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#64748b;border-radius:10px;padding:11px 10px;font-size:13px;cursor:pointer;" title="إعادة">↺</button>
+  </div>
+  <div id="completeBanner" style="display:none;text-align:center;padding:8px 14px 12px;background:rgba(250,204,21,0.06);border-top:1px solid rgba(250,204,21,0.15);"><div style="font-size:18px;margin-bottom:3px;">🌟</div><div style="font-size:12px;color:#facc15;font-family:'Syne',sans-serif;font-weight:700;">أحسنت! اكتملت الدورة</div></div>
+</div>
+
+<!-- Print Button -->
+<button class="print-fab" onclick="printLecture()" title="طباعة نسخة للمذاكرة (شرح + أسئلة بدون إجابات)">🖨️</button>
+
+<!-- HEADER -->
+<div class="header">
+  <div style="position:relative;z-index:1;">
+    <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:5px;color:rgba(56,189,248,0.5);margin-bottom:6px;">4.0 GPA</div>
+    <div style="font-family:'Syne',sans-serif;font-size:clamp(28px,6vw,44px);font-weight:800;background:linear-gradient(135deg,#fff 0%,#38bdf8 50%,#4ade80 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:18px;">FullMark</div>
+    <div class="header-tag">FullMark Study Guide · BCMS-126</div>
+    <h1>Histology for Dentistry Students 🔬</h1>
+    <p class="header-sub">Notes · Mind Maps · الزتونة · Key Points · 30 MCQ per Chapter</p>
+    <div class="header-stats">
+      <div class="stat"><strong>5</strong>Chapters</div>
+      <div class="stat"><strong>150</strong>MCQ</div>
+      <div class="stat">Mind Maps</div>
+      <div class="stat">الزتونة</div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <div class="nav-scroll">
+    <button class="nav-btn active" onclick="showLecture(0,this)">Ch.1 · Epithelium</button>
+    <button class="nav-btn" onclick="showLecture(1,this)">Ch.2 · Connective Tissue</button>
+    <button class="nav-btn" onclick="showLecture(2,this)">Ch.3 · Cartilage</button>
+    <button class="nav-btn" onclick="showLecture(3,this)">Ch.4 · Bone</button>
+    <button class="nav-btn" onclick="showLecture(4,this)">Ch.5 · Muscle</button>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ===== CHAPTER 1: EPITHELIUM ===== -->
+<div id="lec-0" class="lecture-page active">
+  <div class="lec-header">
+    <div>
+      <div class="lec-num">Chapter 1</div>
+      <div class="lec-title">Epithelium</div>
+      <div class="lec-desc">Body Tissues Formation · Covering Epithelium · Glandular Epithelium · Neuroepithelium · Full Classification</div>
+    </div>
+  </div>
+  <div class="tab-switch">
+    <button class="tab-btn active" onclick="showTab('lec0',0,this)">📖 Notes</button>
+    <button class="tab-btn" onclick="showTab('lec0',1,this)">🧠 Mind Map</button>
+    <button class="tab-btn" onclick="showTab('lec0',2,this)">🫒 الزتونة</button>
+    <button class="tab-btn" onclick="showTab('lec0',3,this)">⭐ Key Points</button>
+    <button class="tab-btn" onclick="showTab('lec0',4,this)">❓ MCQ</button>
+  </div>
+
+  <div id="lec0-tab0" class="tab-content active">
+    <div class="topic-block">
+      <div class="topic-title">🧬 Body Tissues Formation</div>
+      <ul class="detail-list">
+        <li class="hl">Sperm + Ovum → <strong>Zygote</strong> → mitotic divisions → <strong>Morula</strong> → <strong>Blastocyst</strong></li>
+        <li>Blastocyst: <strong>Inner Cell Mass (Blastomere)</strong> + Outer Trophoblast</li>
+        <li class="hl-g">Blastomere proliferates and differentiates into 4 germ layers:</li>
+        <li><strong>Ectoderm</strong> → Skin &amp; Nervous tissue</li>
+        <li><strong>Mesoderm</strong> → Muscle, CT, Bone, Cartilage, Blood</li>
+        <li><strong>Endoderm</strong> → Respiratory &amp; GI systems</li>
+        <li><strong>Genito-urinary ridge</strong> → Genital &amp; Urinary systems</li>
+      </ul>
+      <div class="note-box green"><strong>4 Basic Tissues:</strong> 1) Epithelial &nbsp;2) Connective &nbsp;3) Muscle &nbsp;4) Nervous</div>
+    </div>
+    <div class="topic-block orange">
+      <div class="topic-title orange">🔬 Epithelium — General Characters</div>
+      <ul class="detail-list">
+        <li class="hl">Covers body from outside &amp; lines its cavities from inside</li>
+        <li>Closely aggregated cells with <strong>little intercellular substance</strong></li>
+        <li>Rest on <strong>Basement Membrane</strong> separating them from underlying CT</li>
+        <li class="hl-o"><strong>No blood vessels</strong> — but nerves ramify between cells</li>
+        <li>Subjected to continuous <strong>Degeneration &amp; Regeneration</strong></li>
+      </ul>
+    </div>
+    <div class="topic-block green">
+      <div class="topic-title green">📊 Simple Epithelium — Classification</div>
+      <table class="phys-table">
+        <tr><th>Type</th><th>Shape / Features</th><th>Nucleus</th><th>Sites</th></tr>
+        <tr><td><strong>Simple Squamous</strong></td><td>Flat cells (squams)</td><td>Flat bulging</td><td>Blood vessels, heart, lung alveoli, small gland ducts</td></tr>
+        <tr><td><strong>Simple Cubical</strong></td><td>Cubical shaped</td><td>Central rounded</td><td>Renal tubules, medium gland ducts</td></tr>
+        <tr><td><strong>Columnar — Non-modified</strong></td><td>Tall cells</td><td>Basal oval</td><td>Large gland ducts</td></tr>
+        <tr><td><strong>Columnar — Secretory</strong></td><td>Vacuolated cytoplasm (Mucin)</td><td>Basal</td><td>Stomach lining</td></tr>
+        <tr><td><strong>Columnar — Absorptive</strong></td><td>Microvilli / Brush Border</td><td>Basal</td><td>Intestine lining</td></tr>
+        <tr><td><strong>Columnar — Ciliated</strong></td><td>Cilia on free surface</td><td>Basal</td><td>Fallopian tube, Uterus</td></tr>
+        <tr><td><strong>Pseudostratified Non-Ciliated</strong></td><td>Single layer, crowded → false stratification</td><td>Multiple levels</td><td>Large gland ducts</td></tr>
+        <tr><td><strong>Pseudostratified Ciliated</strong></td><td>Cilia + Goblet cells</td><td>Multiple levels</td><td>Trachea, Bronchi, Nasal sinuses</td></tr>
+      </table>
+    </div>
+    <div class="topic-block yellow">
+      <div class="topic-title yellow">🔶 Stratified Epithelium</div>
+      <table class="phys-table">
+        <tr><th>Type</th><th>Layers</th><th>Features</th><th>Sites</th></tr>
+        <tr><td><strong>Stratified Squamous — Keratinized</strong></td><td>~30</td><td>Top layer covered by horny keratin scales</td><td>Epidermis of skin (dry)</td></tr>
+        <tr><td><strong>Stratified Squamous — Non-Keratinized</strong></td><td>~30</td><td>No keratin scales — wet surfaces</td><td>Mouth, Oesophagus, External auditory canal, Ear drum</td></tr>
+        <tr><td><strong>Transitional (Urothelium)</strong></td><td>6–8</td><td>Ill-defined BM — cells slide on distension — top cells: large cubical (convex/concave), possibly binucleated</td><td>Renal pelvis, Ureter, Urinary bladder, Prostatic urethra</td></tr>
+      </table>
+      <div class="note-box yellow"><strong>Transitional — Empty bladder:</strong> full thickness (6-8 layers) | <strong>Full bladder:</strong> cells slide → only 2 layers: basal cubical + top flat</div>
+    </div>
+    <div class="topic-block pink">
+      <div class="topic-title pink">🧪 Glandular Epithelium — Formation &amp; Classification</div>
+      <ul class="detail-list">
+        <li class="hl">Epithelial cells proliferate and penetrate underlying CT</li>
+        <li><strong>Remain connected to surface</strong> → Exocrine gland (has duct)</li>
+        <li><strong>Lose connection</strong> → Endocrine gland (no duct)</li>
+      </ul>
+      <table class="phys-table" style="margin-top:12px;">
+        <tr><th>Classification</th><th>Type</th><th>Example</th></tr>
+        <tr><td rowspan="3"><strong>By duct</strong></td><td>Exocrine — has duct</td><td>Salivary glands</td></tr>
+        <tr><td>Endocrine — no duct</td><td>Thyroid, Pituitary, Adrenal</td></tr>
+        <tr><td>Mixed</td><td>Pancreas, Liver</td></tr>
+        <tr><td rowspan="3"><strong>By secretion nature</strong></td><td>Mucous — viscid, poor enzymes</td><td>Goblet cells, Minor salivary glands</td></tr>
+        <tr><td>Serous — watery, rich enzymes</td><td>Parotid, Pancreas</td></tr>
+        <tr><td>Mucoserous — both</td><td>Submandibular, Sublingual</td></tr>
+        <tr><td rowspan="3"><strong>By secretion mode</strong></td><td>Merocrine — cell NOT destroyed</td><td>Salivary glands</td></tr>
+        <tr><td>Apocrine — apical part destroyed</td><td>Mammary glands</td></tr>
+        <tr><td>Holocrine — whole cell destroyed</td><td>Sebaceous glands</td></tr>
+      </table>
+    </div>
+    <div class="topic-block">
+      <div class="topic-title">🧠 Neuroepithelium</div>
+      <ul class="detail-list">
+        <li class="hl">Modified epithelium specialized in <strong>perception of sensory stimuli</strong></li>
+        <li><strong>Sensory cells:</strong> tall — hairlets on free border — vesicles of chemical transmitters — free sensory nerve endings at base</li>
+        <li><strong>Supporting cells:</strong> tall — support sensory cells</li>
+        <li><strong>Basal cells:</strong> small pyramidal on BM — regenerate the other types</li>
+      </ul>
+      <div class="note-box green"><strong>Sites:</strong> 1) Taste buds (tongue) &nbsp; 2) Olfactory epithelium (roof of nose)</div>
+    </div>
+  </div>
+
+  <div id="lec0-tab1" class="tab-content">
+    <div style="text-align:center;margin-bottom:28px;"><div class="mm-center">Epithelium 🔬</div></div>
+    <div class="mm-branches">
+      <div class="mm-branch b1">
+        <div class="mm-branch-title">🔷 Simple Epithelium</div>
+        <div class="mm-leaf">Squamous → vessels, lung alveoli, small ducts</div>
+        <div class="mm-leaf">Cubical → renal tubules, medium ducts</div>
+        <div class="mm-leaf">Columnar Secretory → stomach (mucin)</div>
+        <div class="mm-leaf">Columnar Absorptive → intestine (microvilli)</div>
+        <div class="mm-leaf">Columnar Ciliated → fallopian tube, uterus</div>
+        <div class="mm-leaf">Pseudostratified Ciliated → trachea, bronchi</div>
+      </div>
+      <div class="mm-branch b2">
+        <div class="mm-branch-title">🔶 Stratified Epithelium</div>
+        <div class="mm-leaf">Keratinized → dry skin (epidermis)</div>
+        <div class="mm-leaf">Non-Keratinized → mouth, oesophagus, ear canal</div>
+        <div class="mm-leaf">Transitional → bladder, ureter, renal pelvis</div>
+        <div class="mm-leaf">Transitional changes on distension</div>
+      </div>
+      <div class="mm-branch b3">
+        <div class="mm-branch-title">🧪 Glandular</div>
+        <div class="mm-leaf">Exocrine (duct) / Endocrine (no duct)</div>
+        <div class="mm-leaf">Serous → Parotid (Merocrine)</div>
+        <div class="mm-leaf">Mucous → Goblet / Minor glands</div>
+        <div class="mm-leaf">Holocrine → Sebaceous</div>
+        <div class="mm-leaf">Apocrine → Mammary</div>
+      </div>
+      <div class="mm-branch b4">
+        <div class="mm-branch-title">🧠 Neuroepithelium</div>
+        <div class="mm-leaf">Sensory + Supporting + Basal cells</div>
+        <div class="mm-leaf">Taste buds — tongue</div>
+        <div class="mm-leaf">Olfactory — roof of nose</div>
+      </div>
+      <div class="mm-branch b5">
+        <div class="mm-branch-title">🏗️ Body Tissues</div>
+        <div class="mm-leaf">Zygote → Morula → Blastocyst</div>
+        <div class="mm-leaf">Ectoderm: skin + nervous</div>
+        <div class="mm-leaf">Mesoderm: muscle + bone + blood</div>
+        <div class="mm-leaf">Endoderm: respiratory + GI</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="lec0-tab2" class="tab-content">
+    <div class="zt-header"><div class="zt-emoji">🫒</div><div><div class="zt-title">الزتونة — Epithelium</div><div class="zt-sub">سكيمات الامتحان</div></div></div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن الفرق بين Pseudostratified وStratified</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>Pseudostratified = ONE actual layer</strong> — cells crowded during dev → nuclei at different levels → FALSE appearance of stratification</div></div>
+    </div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن بطانة Fallopian Tube أو Uterus</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>Simple Columnar Ciliated</strong> (NOT Pseudostratified) | Pseudostratified Ciliated → Trachea + Bronchi + Nasal sinuses</div></div>
+    </div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن بطانة المثانة أو الحالب</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>Transitional Epithelium</strong> — always! → Renal pelvis, Ureter, Urinary bladder, Prostatic urethra</div></div>
+      <div class="zt-note">عند الامتلاء → طبقتان فقط: basal cubical + top flat</div>
+    </div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن Keratinized vs Non-Keratinized</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>Keratinized → dry skin (epidermis)</strong> | <strong>Non-Keratinized → wet openings:</strong> Mouth, Oesophagus, External auditory canal, Ear drum</div></div>
+    </div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن طريقة الإفراز في الغدد الدهنية والثدي واللعابية</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>Sebaceous → Holocrine</strong> (whole cell destroyed) | <strong>Mammary → Apocrine</strong> (apical part) | <strong>Salivary → Merocrine</strong> (cell intact)</div></div>
+    </div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن بطانة المعدة والأمعاء الفرق بينهم</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>Stomach → Simple Columnar Secretory</strong> (vacuolated cytoplasm — Mucin) | <strong>Intestine → Simple Columnar Absorptive</strong> (Microvilli / Brush Border)</div></div>
+    </div>
+  </div>
+
+  <div id="lec0-tab3" class="tab-content">
+    <div class="kp-grid">
+      <div class="kp-card"><div class="kp-num">1</div><div class="kp-badge bl">Exam Tip</div><div class="kp-text">Simple Squamous → <strong>Blood vessels + heart + lung alveoli + small gland ducts only</strong></div></div>
+      <div class="kp-card"><div class="kp-num">2</div><div class="kp-badge or">Key Diff</div><div class="kp-text">Pseudostratified ≠ Stratified — it's actually <strong>ONE layer</strong> — nuclei only at different levels due to crowding</div></div>
+      <div class="kp-card"><div class="kp-num">3</div><div class="kp-badge gr">Exam Tip</div><div class="kp-text"><strong>Fallopian tube + Uterus → Simple Columnar Ciliated</strong> | Trachea + Bronchi → Pseudostratified Ciliated</div></div>
+      <div class="kp-card"><div class="kp-num">4</div><div class="kp-badge ye">Exam Tip</div><div class="kp-text">Bladder / Ureter / Renal pelvis / Prostatic urethra → always <strong>Transitional Epithelium</strong></div></div>
+      <div class="kp-card"><div class="kp-num">5</div><div class="kp-badge pk">Diff</div><div class="kp-text">Keratinized → <strong>dry body surface (epidermis)</strong> | Non-Keratinized → <strong>wet openings: mouth, oesophagus, ear canal, ear drum</strong></div></div>
+      <div class="kp-card"><div class="kp-num">6</div><div class="kp-badge bl">Glands</div><div class="kp-text">Sebaceous → <strong>Holocrine</strong> | Mammary → <strong>Apocrine</strong> | Salivary → <strong>Merocrine</strong></div></div>
+      <div class="kp-card"><div class="kp-num">7</div><div class="kp-badge or">Exam Tip</div><div class="kp-text">Stomach → <strong>Simple Columnar Secretory</strong> (vacuolated Mucin cytoplasm) | Intestine → <strong>Absorptive</strong> (Brush Border / Microvilli)</div></div>
+      <div class="kp-card"><div class="kp-num">8</div><div class="kp-badge gr">No vessels</div><div class="kp-text">Epithelium has <strong>NO blood vessels</strong> but has nerves — nourished by diffusion from CT below</div></div>
+      <div class="kp-card"><div class="kp-num">9</div><div class="kp-badge ye">Goblet cells</div><div class="kp-text">Goblet cells = modified Simple Columnar Secretory → secrete Mucus → also found in Pseudostratified Ciliated (trachea)</div></div>
+      <div class="kp-card"><div class="kp-num">10</div><div class="kp-badge pk">Salivary glands</div><div class="kp-text">Parotid → <strong>Serous only</strong> | Submandibular + Sublingual → <strong>Mucoserous</strong> | Minor salivary glands → Mucous</div></div>
+    </div>
+  </div>
+
+  <div id="lec0-tab4" class="tab-content">
+    <div class="mcq-header">
+      <div class="mcq-stats-row">
+        <div class="mcq-stat">Questions: <span>30</span></div>
+        <div class="mcq-stat">Correct: <span id="lec0-correct">0</span></div>
+        <div class="mcq-stat">Wrong: <span id="lec0-wrong">0</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="lec0-prog"></div></div>
+      </div>
+      <div class="mcq-controls">
+        <button class="ctrl-btn" onclick="revealAll('lec0')">Show All</button>
+        <button class="ctrl-btn primary" onclick="resetMCQ('lec0')">Reset</button>
+      </div>
+    </div>
+    <div id="lec0-mcq-container"></div>
+    <div class="score-board" id="lec0-score"><div class="score-num" id="lec0-score-num"></div><div class="score-msg" id="lec0-score-msg"></div><button class="ctrl-btn primary" onclick="resetMCQ('lec0')" style="margin-top:8px;">Retry</button></div>
+  </div>
+  <!-- MOTIVATIONAL BANNER Ch.1 -->
+  <div style="margin-top:28px;background:linear-gradient(135deg,rgba(56,189,248,0.06),rgba(74,222,128,0.06));border:1px solid rgba(56,189,248,0.2);border-radius:14px;padding:22px 24px;text-align:center;direction:rtl;">
+    <div style="font-size:28px;margin-bottom:8px;">🌿</div>
+    <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#38bdf8;margin-bottom:8px;">﴿ وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا ﴾</div>
+    <div style="font-size:13px;color:#94a3b8;line-height:1.8;">أنهيت الفصل الأول — خطوة ممتازة! 🎯<br>الـ Epithelium دي أساس كتير من فصول الأمراض — اللي فهمه دلوقتي هينجيه بإذن الله ✨</div>
+  </div>
+</div>
+
+<!-- ===== CHAPTER 2: CONNECTIVE TISSUE ===== -->
+<div id="lec-1" class="lecture-page">
+  <div class="lec-header">
+    <div>
+      <div class="lec-num">Chapter 2</div>
+      <div class="lec-title">Connective Tissue</div>
+      <div class="lec-desc">3 Types of Fibers · 8 Types of Cells · Matrix · Types of CT Proper</div>
+    </div>
+  </div>
+  <div class="tab-switch">
+    <button class="tab-btn active" onclick="showTab('lec1',0,this)">📖 Notes</button>
+    <button class="tab-btn" onclick="showTab('lec1',1,this)">🧠 Mind Map</button>
+    <button class="tab-btn" onclick="showTab('lec1',2,this)">🫒 الزتونة</button>
+    <button class="tab-btn" onclick="showTab('lec1',3,this)">⭐ Key Points</button>
+    <button class="tab-btn" onclick="showTab('lec1',4,this)">❓ MCQ</button>
+  </div>
+
+  <div id="lec1-tab0" class="tab-content active">
+    <div class="topic-block">
+      <div class="topic-title">🔗 General Characters</div>
+      <ul class="detail-list">
+        <li class="hl">Supports and connects various tissues and organs</li>
+        <li>Consists of: <strong>Cells + Fibers + Matrix (intercellular substance)</strong></li>
+        <li>Rich in <strong>blood vessels and nerves</strong></li>
+        <li class="hl-g"><strong>Types:</strong> CT Proper (soft) · Cartilage (rigid) · Bone (hard) · Blood (fluid)</li>
+      </ul>
+    </div>
+    <div class="topic-block orange">
+      <div class="topic-title orange">🧵 A — CT Fibers (3 Types)</div>
+      <table class="phys-table">
+        <tr><th>Feature</th><th>White Collagenous</th><th>Yellow Elastic</th><th>Reticular</th></tr>
+        <tr><td>Composition</td><td><strong>Collagen</strong></td><td><strong>Elastin</strong></td><td>Collagen Type III</td></tr>
+        <tr><td>Fresh colour</td><td>White</td><td>Yellow</td><td>—</td></tr>
+        <tr><td>Form</td><td>Wavy bundles</td><td>Thin, long, refractile</td><td>Very thin — network</td></tr>
+        <tr><td>Branching</td><td>Bundle branches — single fiber does NOT</td><td>Fiber branches — forms elastic membranes</td><td>Branch &amp; anastomose → network</td></tr>
+        <tr><td>H&amp;E</td><td>Acidophilic</td><td>Acidophilic</td><td>Not stained</td></tr>
+        <tr><td>Van Gieson</td><td><strong>Red</strong></td><td><strong>Yellow</strong></td><td>—</td></tr>
+        <tr><td>Special stain</td><td>Mallory Trichrome: <strong>Blue</strong></td><td>Ver-Hoff's: <strong>Black</strong></td><td>Silver: <strong>Black</strong></td></tr>
+        <tr><td>Digestion</td><td>Pepsin + Collagenase</td><td>Elastase only</td><td>—</td></tr>
+        <tr><td>Boiling</td><td>Converts to Gelatin</td><td>Not affected</td><td>—</td></tr>
+        <tr><td>Sites</td><td>Tendons, cornea, sclera, bone</td><td>Arterial walls, trachea, back ligaments</td><td>Stroma of liver, spleen, lymph nodes</td></tr>
+      </table>
+      <div class="note-box orange"><strong>Collagen Types:</strong> Type I → Bone + White Fibrocartilage | Type II → Hyaline + Yellow Elastic Fibrocartilage | Type III → Reticular fibers</div>
+    </div>
+    <div class="topic-block green">
+      <div class="topic-title green">🦠 B — CT Cells (8 Types)</div>
+      <table class="phys-table">
+        <tr><th>Cell</th><th>Origin</th><th>LM Features</th><th>Function</th></tr>
+        <tr><td><strong>1. Fat Cells (Adipocytes)</strong></td><td>UMCs</td><td>Oval; peripheral flattened nucleus; large fat globule → Signet Ring in H&amp;E</td><td>Energy storage + Heat insulation</td></tr>
+        <tr><td><strong>2. Plasma Cells</strong></td><td>B Lymphocytes activation</td><td>Oval; eccentric rounded nucleus (Cart-Wheel chromatin); deep basophilic cytoplasm + negative Golgi image</td><td>Secrete antibodies (humoral immunity)</td></tr>
+        <tr><td><strong>3. Mast Cells</strong></td><td>—</td><td>Oval; central rounded nucleus; large basophilic granules (Histamine + Heparin) — Toluidine Blue: purple (metachromasia)</td><td>Secrete Histamine (allergy) + Heparin (anticoagulant)</td></tr>
+        <tr><td><strong>4. Blood Leucocytes</strong></td><td>Blood</td><td>Migrate into CT in certain conditions</td><td>Eosinophils (allergy) / Neutrophils (acute infection) / Monocytes+Lymphocytes (chronic infection)</td></tr>
+        <tr><td><strong>5. Fibroblasts</strong></td><td>Pericytes ← UMCs</td><td>Branched spindle-shaped; eccentric oval nucleus; basophilic cytoplasm + negative Golgi image</td><td>Synthesize ALL CT fibers + Matrix + CT growth &amp; wound healing</td></tr>
+        <tr><td><strong>6. Macrophages</strong></td><td>Blood Monocytes</td><td>Large branched with pseudopodia; eccentric kidney/oval nucleus; cytoplasm not clear — Trypan Blue (vital stain)</td><td>Phagocytosis + Secrete Collagenase &amp; Elastase + Form Foreign Body Giant Cell</td></tr>
+        <tr><td><strong>7. Pigment Cells</strong></td><td>—</td><td>—</td><td>Contain Melanin — in skin and eye</td></tr>
+        <tr><td><strong>8. UMCs</strong></td><td>—</td><td>Branched; large oval nucleus; basophilic cytoplasm</td><td>Mother cell of ALL CT cells</td></tr>
+      </table>
+    </div>
+    <div class="topic-block yellow">
+      <div class="topic-title yellow">🧫 C — CT Matrix</div>
+      <ul class="detail-list">
+        <li class="hl">Soft material in which cells and fibers lie</li>
+        <li><strong>Organic (amorphous) component</strong> (secreted by Fibroblast): Proteins + Glycoproteins + Proteoglycans (GAGs)</li>
+        <li><strong>Fluid component</strong> (from blood): ~60-70% water — if increased → Oedema / if decreased → Dehydration</li>
+      </ul>
+    </div>
+    <div class="topic-block pink">
+      <div class="topic-title pink">📂 Types of CT Proper</div>
+      <table class="phys-table">
+        <tr><th>Type</th><th>Sites</th><th>Fibers</th><th>Cells / Matrix</th></tr>
+        <tr><td><strong>1. Loose (Ordinary)</strong></td><td>Around blood vessels, submucosa of GIT</td><td>Collagenous + Elastic</td><td>Fibroblasts, Fat, Macrophages — Matrix: Hyaluronic acid</td></tr>
+        <tr><td><strong>2. White Fibrous — Regular</strong></td><td>Cornea, Tendons</td><td>Regular collagenous bundles</td><td>Fibroblasts</td></tr>
+        <tr><td><strong>2. White Fibrous — Irregular</strong></td><td>Sclera, Perichondrium, Periosteum</td><td>Irregular collagenous bundles</td><td>Fibroblasts</td></tr>
+        <tr><td><strong>3. Yellow Elastic</strong></td><td>Arterial walls, Trachea, Back ligaments</td><td>Regular elastic fibers</td><td>Fibroblasts</td></tr>
+        <tr><td><strong>4. Mucoid</strong></td><td>Umbilical cord, Pulp of teeth</td><td>Few</td><td>Young Fibroblasts — Matrix: soft, rich in Mucin + Hyaluronic acid</td></tr>
+        <tr><td><strong>5. Reticular</strong></td><td>Stroma of liver, spleen, lymph nodes</td><td>Reticular fibers</td><td>Reticular cells (modified Fibroblasts)</td></tr>
+        <tr><td><strong>6. White Adipose</strong></td><td>Subcutaneous tissue, Perinephric fat</td><td>—</td><td>Large fat cells — single large globule — Signet Ring — few mitochondria → energy storage + insulation</td></tr>
+        <tr><td><strong>6. Brown Adipose</strong></td><td>Newborns; Mediastinum + between scapulae (adults)</td><td>—</td><td>Small fat cells — multiple droplets — central rounded nucleus — numerous mitochondria → rapid heat production in cold</td></tr>
+      </table>
+      <div class="note-box pink"><strong>White vs Brown:</strong> White → energy storage + heat insulation | Brown → rapid heat production (numerous mitochondria) | Brown has MORE blood supply than White</div>
+    </div>
+  </div>
+
+  <div id="lec1-tab1" class="tab-content">
+    <div style="text-align:center;margin-bottom:28px;"><div class="mm-center">Connective Tissue 🔗</div></div>
+    <div class="mm-branches">
+      <div class="mm-branch b1">
+        <div class="mm-branch-title">🧵 Fibers (3)</div>
+        <div class="mm-leaf">White Collagenous → white, strong, Van Gieson: red</div>
+        <div class="mm-leaf">Yellow Elastic → yellow, elastic, Ver-Hoff's: black</div>
+        <div class="mm-leaf">Reticular → network, Silver: black</div>
+      </div>
+      <div class="mm-branch b2">
+        <div class="mm-branch-title">🦠 Cells (8)</div>
+        <div class="mm-leaf">Fat → storage (Signet Ring)</div>
+        <div class="mm-leaf">Plasma → antibodies (Cart-Wheel)</div>
+        <div class="mm-leaf">Mast → Histamine + Heparin</div>
+        <div class="mm-leaf">Fibroblasts → synthesis + healing (origin: Pericytes)</div>
+        <div class="mm-leaf">Macrophages → phagocytosis (origin: Monocytes)</div>
+        <div class="mm-leaf">UMCs → mother cell</div>
+      </div>
+      <div class="mm-branch b3">
+        <div class="mm-branch-title">📂 CT Proper Types</div>
+        <div class="mm-leaf">Loose → around vessels</div>
+        <div class="mm-leaf">White Regular → cornea, tendons</div>
+        <div class="mm-leaf">White Irregular → sclera, periosteum</div>
+        <div class="mm-leaf">Mucoid → umbilical cord, tooth pulp</div>
+        <div class="mm-leaf">Reticular → liver, spleen</div>
+      </div>
+      <div class="mm-branch b4">
+        <div class="mm-branch-title">🎨 Stains</div>
+        <div class="mm-leaf">Van Gieson: white→red / yellow→yellow</div>
+        <div class="mm-leaf">Ver-Hoff's: yellow elastic → black</div>
+        <div class="mm-leaf">Silver: reticular → black</div>
+        <div class="mm-leaf">Mallory Trichrome: white → blue</div>
+        <div class="mm-leaf">Toluidine Blue: Mast → purple</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="lec1-tab2" class="tab-content">
+    <div class="zt-header"><div class="zt-emoji">🫒</div><div><div class="zt-title">الزتونة — Connective Tissue</div><div class="zt-sub">سكيمات الامتحان</div></div></div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن الصبغات وألوانها</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>Van Gieson: white collagenous = Red / yellow elastic = Yellow</strong> | <strong>Ver-Hoff's: yellow elastic = Black</strong> | <strong>Silver: reticular = Black</strong> | <strong>Mallory Trichrome: white = Blue</strong></div></div>
+    </div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن أصل الخلايا</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>Macrophage ← Blood Monocytes</strong> | <strong>Fibroblast ← Pericytes ← UMCs</strong> | <strong>Plasma cell ← B Lymphocytes</strong> | <strong>UMC = mother cell of ALL CT cells</strong></div></div>
+    </div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن Cart-Wheel nucleus</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>Plasma cells ONLY</strong> — deep basophilic cytoplasm + negative Golgi image → function: secretion of antibodies</div></div>
+    </div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن Mucoid CT فين بالظبط</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>Umbilical cord + Pulp of teeth</strong> — important for dentistry students! Young Fibroblasts + Matrix rich in Mucin</div></div>
+    </div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن Golgi Image السالبة فين بتلاقيها</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text">Negative Golgi Image (pale area) → in <strong>Osteoblasts + Plasma cells + Fibroblasts</strong> (all synthetic/secretory cells)</div></div>
+    </div>
+  </div>
+
+  <div id="lec1-tab3" class="tab-content">
+    <div class="kp-grid">
+      <div class="kp-card"><div class="kp-num">1</div><div class="kp-badge bl">Stain Guide</div><div class="kp-text">Van Gieson → <strong>White=Red / Yellow=Yellow</strong> | Ver-Hoff's → <strong>Yellow elastic=Black</strong> | Silver → <strong>Reticular=Black</strong></div></div>
+      <div class="kp-card"><div class="kp-num">2</div><div class="kp-badge or">Cell Origins</div><div class="kp-text">Macrophage ← <strong>Blood Monocytes</strong> | Fibroblast ← <strong>Pericytes ← UMCs</strong> | Plasma cell ← <strong>B Lymphocytes</strong></div></div>
+      <div class="kp-card"><div class="kp-num">3</div><div class="kp-badge gr">Cart-Wheel</div><div class="kp-text">"Cart-Wheel" nucleus = <strong>Plasma cells ONLY</strong> — deep basophilic cytoplasm + negative Golgi image</div></div>
+      <div class="kp-card"><div class="kp-num">4</div><div class="kp-badge ye">Mast Cells</div><div class="kp-text">Found in <strong>Mucosa of GIT + Respiratory tract</strong> — Toluidine Blue → <strong>Purple (Metachromasia)</strong> — due to Heparin</div></div>
+      <div class="kp-card"><div class="kp-num">5</div><div class="kp-badge pk">Wound Healing</div><div class="kp-text">Fibroblasts: synthesize <strong>all fiber types</strong> + Matrix + <strong>CT growth &amp; wound healing</strong></div></div>
+      <div class="kp-card"><div class="kp-num">6</div><div class="kp-badge bl">Mucoid CT</div><div class="kp-text">Found in <strong>Umbilical cord + Tooth pulp</strong> — Young Fibroblasts + Matrix rich in Mucin — key for dental students!</div></div>
+      <div class="kp-card"><div class="kp-num">7</div><div class="kp-badge or">Brown Adipose</div><div class="kp-text">Brown → <strong>newborns, between scapulae, mediastinum</strong> — numerous mitochondria → <strong>rapid heat production</strong> — MORE blood supply than White</div></div>
+      <div class="kp-card"><div class="kp-num">8</div><div class="kp-badge gr">Macrophages</div><div class="kp-text">Macrophages secrete <strong>Collagenase + Elastase</strong> — fuse to form <strong>Foreign Body Giant Cell</strong> for large foreign bodies</div></div>
+    </div>
+  </div>
+
+  <div id="lec1-tab4" class="tab-content">
+    <div class="mcq-header">
+      <div class="mcq-stats-row">
+        <div class="mcq-stat">Questions: <span>30</span></div>
+        <div class="mcq-stat">Correct: <span id="lec1-correct">0</span></div>
+        <div class="mcq-stat">Wrong: <span id="lec1-wrong">0</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="lec1-prog"></div></div>
+      </div>
+      <div class="mcq-controls">
+        <button class="ctrl-btn" onclick="revealAll('lec1')">Show All</button>
+        <button class="ctrl-btn primary" onclick="resetMCQ('lec1')">Reset</button>
+      </div>
+    </div>
+    <div id="lec1-mcq-container"></div>
+    <div class="score-board" id="lec1-score"><div class="score-num" id="lec1-score-num"></div><div class="score-msg" id="lec1-score-msg"></div><button class="ctrl-btn primary" onclick="resetMCQ('lec1')" style="margin-top:8px;">Retry</button></div>
+  </div>
+  <!-- MOTIVATIONAL BANNER Ch.2 -->
+  <div style="margin-top:28px;background:linear-gradient(135deg,rgba(251,146,60,0.06),rgba(250,204,21,0.06));border:1px solid rgba(251,146,60,0.2);border-radius:14px;padding:22px 24px;text-align:center;direction:rtl;">
+    <div style="font-size:28px;margin-bottom:8px;">💪</div>
+    <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#fb923c;margin-bottom:8px;">﴿ إِنَّ مَعَ الْعُسْرِ يُسْرًا ﴾</div>
+    <div style="font-size:13px;color:#94a3b8;line-height:1.8;">الـ Connective Tissue ده واحد من أصعب الفصول — وإنت عديته! 🔥<br>كل خلية وكل fiber بتحفظه دلوقتي هو نقطة في امتحانك بإذن الله 🎯</div>
+  </div>
+</div>
+
+<!-- ===== CHAPTER 3: CARTILAGE ===== -->
+<div id="lec-2" class="lecture-page">
+  <div class="lec-header">
+    <div>
+      <div class="lec-num">Chapter 3</div>
+      <div class="lec-title">Cartilage</div>
+      <div class="lec-desc">Hyaline · Yellow Elastic Fibrocartilage · White Fibrocartilage · Full Comparison</div>
+    </div>
+  </div>
+  <div class="tab-switch">
+    <button class="tab-btn active" onclick="showTab('lec2',0,this)">📖 Notes</button>
+    <button class="tab-btn" onclick="showTab('lec2',1,this)">🧠 Mind Map</button>
+    <button class="tab-btn" onclick="showTab('lec2',2,this)">🫒 الزتونة</button>
+    <button class="tab-btn" onclick="showTab('lec2',3,this)">⭐ Key Points</button>
+    <button class="tab-btn" onclick="showTab('lec2',4,this)">❓ MCQ</button>
+  </div>
+
+  <div id="lec2-tab0" class="tab-content active">
+    <div class="topic-block">
+      <div class="topic-title">🔬 Cartilage — General</div>
+      <ul class="detail-list">
+        <li class="hl">Type of CT — <strong>poor in blood supply</strong> — firm or rubbery matrix</li>
+        <li>Formed of: <strong>Perichondrium + Chondrocytes + Matrix</strong></li>
+      </ul>
+    </div>
+    <div class="topic-block orange">
+      <div class="topic-title orange">1️⃣ Hyaline Cartilage</div>
+      <div class="info-grid">
+        <div class="info-card"><div class="info-label">Characters</div><div class="info-value"><strong>Rigid</strong> with limited flexibility (Chondroitin Sulphate) — <strong>Pale blue &amp; translucent</strong></div></div>
+        <div class="info-card"><div class="info-label">Sites</div><div class="info-value">Long bones of foetal skeleton · Respiratory passages · Costal cartilage · Articular cartilage</div></div>
+      </div>
+      <div style="margin-top:12px;"><strong style="color:var(--accent2);font-size:13px;">Perichondrium:</strong>
+        <ul class="detail-list" style="margin-top:8px;">
+          <li class="hl"><strong>Outer Fibrous Layer:</strong> White fibrous CT rich in blood vessels → attachment of muscles + blood supply</li>
+          <li><strong>Inner Chondrogenic Layer:</strong> contains Chondroblasts (flat cells) → secrete matrix → become Chondrocytes during growth &amp; healing</li>
+        </ul>
+      </div>
+      <table class="phys-table" style="margin-top:12px;">
+        <tr><th></th><th>Young Chondrocytes</th><th>Mature Chondrocytes</th></tr>
+        <tr><td><strong>Site</strong></td><td>Under the Perichondrium</td><td>Deep in cartilage</td></tr>
+        <tr><td><strong>Shape</strong></td><td>Flat</td><td>Rounded</td></tr>
+        <tr><td><strong>Lacunae</strong></td><td>Singly in flat lacunae</td><td>Singly or in Cell Nests (2, 4, 8)</td></tr>
+        <tr><td><strong>Cytoplasm</strong></td><td>Basophilic</td><td>Pale basophilic</td></tr>
+      </table>
+      <div class="note-box orange"><strong>Matrix:</strong> Firm/rubbery — non-vascular — nourished by diffusion from Perichondrium | Components: Tissue fluid + Collagen Type II + Chondroitin Sulphate (Proteoglycan) + Proteins + Glycoproteins | H&amp;E: homogenous Basophilic</div>
+    </div>
+    <div class="topic-block green">
+      <div class="topic-title green">2️⃣ Yellow Elastic Fibrocartilage</div>
+      <div class="info-grid">
+        <div class="info-card"><div class="info-label">Characters</div><div class="info-value"><strong>More elastic</strong> — Yellow colour</div></div>
+        <div class="info-card"><div class="info-label">Sites</div><div class="info-value">Ear pinna · External auditory canal</div></div>
+      </div>
+      <ul class="detail-list" style="margin-top:10px;">
+        <li>Has Perichondrium + Chondrocytes</li>
+        <li class="hl"><strong>Matrix:</strong> very rich in elastic fibers | Stain: Ver-Hoff's → <strong>Black</strong></li>
+      </ul>
+    </div>
+    <div class="topic-block yellow">
+      <div class="topic-title yellow">3️⃣ White Fibrocartilage</div>
+      <div class="info-grid">
+        <div class="info-card"><div class="info-label">Characters</div><div class="info-value"><strong>Less elastic</strong> — White</div></div>
+        <div class="info-card"><div class="info-label">Sites</div><div class="info-value">Intervertebral discs · Symphysis pubis · Semilunar cartilage of knee</div></div>
+      </div>
+      <ul class="detail-list" style="margin-top:10px;">
+        <li class="hl"><strong>NO Perichondrium</strong> — nourished from blood vessels of surrounding collagenous bundles</li>
+        <li><strong>Matrix:</strong> parallel bundles of collagenous fibers | H&amp;E: <strong>Acidophilic</strong></li>
+        <li><strong>Chondrocytes:</strong> rows (single or in pairs) in lacunae between collagenous bundles</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="lec2-tab1" class="tab-content">
+    <div style="text-align:center;margin-bottom:28px;"><div class="mm-center">Cartilage 🦷</div></div>
+    <div class="mm-branches">
+      <div class="mm-branch b1">
+        <div class="mm-branch-title">1️⃣ Hyaline</div>
+        <div class="mm-leaf">Pale blue, translucent</div>
+        <div class="mm-leaf">Perichondrium (fibrous + chondrogenic)</div>
+        <div class="mm-leaf">Collagen Type II + Chondroitin Sulphate</div>
+        <div class="mm-leaf">H&E: Basophilic</div>
+        <div class="mm-leaf">Sites: foetal bones, resp. passages, costal, articular</div>
+      </div>
+      <div class="mm-branch b2">
+        <div class="mm-branch-title">2️⃣ Yellow Elastic</div>
+        <div class="mm-leaf">Yellow, more elastic</div>
+        <div class="mm-leaf">Has Perichondrium</div>
+        <div class="mm-leaf">Matrix: rich in elastic fibers</div>
+        <div class="mm-leaf">Ver-Hoff's: Black</div>
+        <div class="mm-leaf">Sites: ear pinna, ext. auditory canal</div>
+      </div>
+      <div class="mm-branch b3">
+        <div class="mm-branch-title">3️⃣ White Fibro</div>
+        <div class="mm-leaf">White, less elastic</div>
+        <div class="mm-leaf">NO Perichondrium</div>
+        <div class="mm-leaf">Matrix: parallel collagenous bundles</div>
+        <div class="mm-leaf">H&E: Acidophilic</div>
+        <div class="mm-leaf">Sites: intervertebral discs, symphysis pubis, semilunar</div>
+      </div>
+      <div class="mm-branch b4">
+        <div class="mm-branch-title">🔑 Chondrocytes</div>
+        <div class="mm-leaf">Young: flat, under Perichondrium</div>
+        <div class="mm-leaf">Mature: rounded, Cell Nests (2,4,8)</div>
+        <div class="mm-leaf">Nourished by diffusion from Perichondrium</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="lec2-tab2" class="tab-content">
+    <div class="zt-header"><div class="zt-emoji">🫒</div><div><div class="zt-title">الزتونة — Cartilage</div><div class="zt-sub">سكيمات الامتحان</div></div></div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن الغضروف اللي بلا Perichondrium</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>White Fibrocartilage ONLY</strong> has no Perichondrium — nourished from blood vessels of surrounding collagenous bundles</div></div>
+    </div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن صيوان الأذن أو القناة السمعية الخارجية</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>Yellow Elastic Fibrocartilage</strong> — matrix rich in elastic fibers — stained black with Ver-Hoff's</div></div>
+    </div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن الأقراص بين الفقرية أو Symphysis Pubis</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>White Fibrocartilage</strong> — also: Semilunar cartilage of knee (Meniscus)</div></div>
+    </div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن نوع الكولاجين في كل غضروف</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>Type II → Hyaline + Yellow Elastic Fibrocartilage</strong> | <strong>Type I → White Fibrocartilage</strong> (and bone)</div></div>
+    </div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن Cell Nests في الغضروف الزجاجي</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>Mature Chondrocytes</strong> sit in Cell Nests of <strong>2, 4, or 8 cells</strong> — because they can divide | Young Chondrocytes: singly in flat lacunae</div></div>
+    </div>
+  </div>
+
+  <div id="lec2-tab3" class="tab-content">
+    <div class="kp-grid">
+      <div class="kp-card"><div class="kp-num">1</div><div class="kp-badge bl">No Perichondrium</div><div class="kp-text"><strong>White Fibrocartilage ONLY</strong> has no Perichondrium — nourished from blood vessels of surrounding collagen bundles</div></div>
+      <div class="kp-card"><div class="kp-num">2</div><div class="kp-badge or">Stains</div><div class="kp-text">Hyaline → H&amp;E: <strong>Basophilic</strong> | Yellow Elastic → <strong>Ver-Hoff's: Black</strong> | White Fibro → H&amp;E: <strong>Acidophilic</strong></div></div>
+      <div class="kp-card"><div class="kp-num">3</div><div class="kp-badge gr">Collagen Types</div><div class="kp-text">Type II → <strong>Hyaline + Yellow Elastic Fibrocartilage</strong> | Type I → <strong>White Fibrocartilage + Bone</strong></div></div>
+      <div class="kp-card"><div class="kp-num">4</div><div class="kp-badge ye">Cell Nests</div><div class="kp-text">Cell Nests (2, 4, 8 cells) → <strong>Mature Chondrocytes in Hyaline only</strong> — can divide | Young: singly in flat lacunae</div></div>
+      <div class="kp-card"><div class="kp-num">5</div><div class="kp-badge pk">Hyaline Characters</div><div class="kp-text">Pale blue, translucent — <strong>most abundant</strong> — Foetal bones + Articular + Costal + Respiratory passages</div></div>
+      <div class="kp-card"><div class="kp-num">6</div><div class="kp-badge bl">Nourishment</div><div class="kp-text">Cartilage is <strong>avascular</strong> → nourished by diffusion from Perichondrium (except White Fibro: from collagen bundle vessels)</div></div>
+    </div>
+  </div>
+
+  <div id="lec2-tab4" class="tab-content">
+    <div class="mcq-header">
+      <div class="mcq-stats-row">
+        <div class="mcq-stat">Questions: <span>30</span></div>
+        <div class="mcq-stat">Correct: <span id="lec2-correct">0</span></div>
+        <div class="mcq-stat">Wrong: <span id="lec2-wrong">0</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="lec2-prog"></div></div>
+      </div>
+      <div class="mcq-controls">
+        <button class="ctrl-btn" onclick="revealAll('lec2')">Show All</button>
+        <button class="ctrl-btn primary" onclick="resetMCQ('lec2')">Reset</button>
+      </div>
+    </div>
+    <div id="lec2-mcq-container"></div>
+    <div class="score-board" id="lec2-score"><div class="score-num" id="lec2-score-num"></div><div class="score-msg" id="lec2-score-msg"></div><button class="ctrl-btn primary" onclick="resetMCQ('lec2')" style="margin-top:8px;">Retry</button></div>
+  </div>
+  <!-- MOTIVATIONAL BANNER Ch.3 -->
+  <div style="margin-top:28px;background:linear-gradient(135deg,rgba(74,222,128,0.06),rgba(56,189,248,0.06));border:1px solid rgba(74,222,128,0.2);border-radius:14px;padding:22px 24px;text-align:center;direction:rtl;">
+    <div style="font-size:28px;margin-bottom:8px;">🦴</div>
+    <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#4ade80;margin-bottom:8px;">﴿ وَعَلَى اللَّهِ فَتَوَكَّلُوا إِن كُنتُم مُّؤْمِنِينَ ﴾</div>
+    <div style="font-size:13px;color:#94a3b8;line-height:1.8;">الـ Cartilage خلصت — وإنت ماشي بثبات! 🌱<br>فرق الـ Hyaline عن Elastic عن Fibrocartilage ده سؤال ثابت في الامتحان — وإنت جاهزه بإذن الله ✨</div>
+  </div>
+</div>
+
+<!-- ===== CHAPTER 4: BONE ===== -->
+<div id="lec-3" class="lecture-page">
+  <div class="lec-header">
+    <div>
+      <div class="lec-num">Chapter 4</div>
+      <div class="lec-title">Bone</div>
+      <div class="lec-desc">Periosteum · Endosteum · Bone Matrix · 4 Bone Cells · Compact vs Cancellous · Haversian System</div>
+    </div>
+  </div>
+  <div class="tab-switch">
+    <button class="tab-btn active" onclick="showTab('lec3',0,this)">📖 Notes</button>
+    <button class="tab-btn" onclick="showTab('lec3',1,this)">🧠 Mind Map</button>
+    <button class="tab-btn" onclick="showTab('lec3',2,this)">🫒 الزتونة</button>
+    <button class="tab-btn" onclick="showTab('lec3',3,this)">⭐ Key Points</button>
+    <button class="tab-btn" onclick="showTab('lec3',4,this)">❓ MCQ</button>
+  </div>
+
+  <div id="lec3-tab0" class="tab-content active">
+    <div class="topic-block">
+      <div class="topic-title">🦴 Bone — General</div>
+      <ul class="detail-list">
+        <li class="hl"><strong>Calcified osteoid tissue</strong> — hard matrix — rich in blood vessels</li>
+        <li>Formed of: <strong>Periosteum + Endosteum + Bone Matrix + Bone Cells</strong></li>
+      </ul>
+    </div>
+    <div class="topic-block orange">
+      <div class="topic-title orange">I — Periosteum</div>
+      <ul class="detail-list">
+        <li>Vascular CT membrane covering the bone</li>
+        <li class="hl"><strong>Outer Fibrous Layer:</strong> White fibrous CT rich in blood vessels → attachment of muscles + blood supply to osteocytes</li>
+        <li class="hl-o"><strong>Inner Osteogenic Layer:</strong> Osteogenic cells → give rise to Osteoblasts during growth &amp; fracture healing</li>
+      </ul>
+    </div>
+    <div class="topic-block green">
+      <div class="topic-title green">II — Endosteum</div>
+      <ul class="detail-list">
+        <li>Vascular CT membrane lining the <strong>internal surface</strong> of bone (medullary cavity)</li>
+        <li>Similar in structure to the <strong>Inner Osteogenic Layer</strong> of Periosteum</li>
+      </ul>
+    </div>
+    <div class="topic-block yellow">
+      <div class="topic-title yellow">III — Bone Matrix</div>
+      <ul class="detail-list">
+        <li class="hl">Hard in consistency — rich in blood vessels — arranged in <strong>bone lamellae</strong></li>
+        <li><strong>Organic components:</strong> Collagen Type I + Proteoglycan (Chondroitin sulphate) + Proteins + Glycoproteins</li>
+        <li><strong>Inorganic (salts):</strong> Calcium + Phosphorus as <strong>Hydroxyapatite crystals</strong> + small amounts of citrate, Na, Mg, Fe</li>
+        <li class="hl-y"><strong>Hardness</strong> = Hydroxyapatite crystals + Collagen Type I | H&amp;E: <strong>Acidophilic</strong></li>
+      </ul>
+    </div>
+    <div class="topic-block pink">
+      <div class="topic-title pink">IV — Bone Cells (4 Types)</div>
+      <table class="phys-table">
+        <tr><th>Cell</th><th>Origin</th><th>Site</th><th>LM Features</th><th>Function</th></tr>
+        <tr><td><strong>1. Osteogenic Cells</strong></td><td>Pericyte</td><td>Periosteum + Endosteum</td><td>Flat; central flat nucleus; pale basophilic cytoplasm</td><td>Give rise to Osteoblasts during growth &amp; healing</td></tr>
+        <tr><td><strong>2. Osteoblasts</strong></td><td>Osteogenic cells</td><td>Activated Periosteum + Endosteum</td><td>Oval branched; eccentric oval nucleus; deep basophilic cytoplasm + <strong>negative Golgi image</strong></td><td>Synthesize organic component of matrix + help calcification</td></tr>
+        <tr><td><strong>3. Osteocytes</strong></td><td>Mature Osteoblasts</td><td>Single inside Lacunae between lamellae</td><td>Oval branched; central oval nucleus; EM: processes through Canaliculi → Gap Junctions → electrolyte exchange</td><td>Maintain integrity of bone matrix</td></tr>
+        <tr><td><strong>4. Osteoclasts</strong></td><td>Fusion of Blood Monocytes</td><td>Howship's Lacuna (inner bone surface)</td><td>Large irregular + Brush Border; multinucleated; foamy cytoplasm</td><td>Bone resorption by secreting carbonic acid + Collagenase</td></tr>
+      </table>
+    </div>
+    <div class="topic-block">
+      <div class="topic-title">🔷 Compact vs Cancellous Bone</div>
+      <table class="phys-table">
+        <tr><th>Feature</th><th>Compact (Ivory) Bone</th><th>Cancellous (Spongy) Bone</th></tr>
+        <tr><td>Character</td><td>Solid — no holes</td><td>Many holes filled with bone marrow</td></tr>
+        <tr><td>Sites</td><td>Shaft of long bones · Outer covering of vertebrae &amp; ribs · Outer &amp; inner plates of flat skull bones</td><td>Epiphysis of long bones · Centre of flat bones · Bodies of vertebrae &amp; ribs · Young embryonic bone</td></tr>
+        <tr><td>Structural unit</td><td><strong>Haversian System (Osteon)</strong></td><td>Trabeculae — no Haversian System</td></tr>
+      </table>
+      <div class="note-box" style="margin-top:12px;">
+        <strong>Haversian System (Osteon):</strong><br>
+        • <strong>Haversian Canal:</strong> parallel to longitudinal axis — contains loose CT rich in blood vessels<br>
+        • <strong>Concentric Lamellae:</strong> 4–20 lamellae around the Haversian Canal<br>
+        • <strong>Volkmann's Canals:</strong> transverse/oblique canals connecting Haversian canals &amp; Periosteum/Endosteum<br><br>
+        <strong>4 Types of Lamellae in Compact Bone:</strong><br>
+        1) Outer Circumferential → under &amp; parallel to Periosteum<br>
+        2) Inner Circumferential → under &amp; parallel to Endosteum<br>
+        3) Concentric → around Haversian Canal<br>
+        4) Interstitial → irregularly between Haversian Systems (remnants of old osteons)
+      </div>
+    </div>
+  </div>
+
+  <div id="lec3-tab1" class="tab-content">
+    <div style="text-align:center;margin-bottom:28px;"><div class="mm-center">Bone 🦴</div></div>
+    <div class="mm-branches">
+      <div class="mm-branch b1">
+        <div class="mm-branch-title">🏠 Periosteum</div>
+        <div class="mm-leaf">Outer Fibrous → blood vessels, muscle attachment</div>
+        <div class="mm-leaf">Inner Osteogenic → Osteogenic cells → Osteoblasts</div>
+      </div>
+      <div class="mm-branch b2">
+        <div class="mm-branch-title">🧱 Bone Matrix</div>
+        <div class="mm-leaf">Organic: Collagen Type I + GAGs</div>
+        <div class="mm-leaf">Inorganic: Hydroxyapatite (Ca + P)</div>
+        <div class="mm-leaf">H&E: Acidophilic — Lamellae</div>
+      </div>
+      <div class="mm-branch b3">
+        <div class="mm-branch-title">🦠 Bone Cells</div>
+        <div class="mm-leaf">Osteogenic ← Pericyte</div>
+        <div class="mm-leaf">Osteoblasts ← Osteogenic (neg. Golgi)</div>
+        <div class="mm-leaf">Osteocytes → Lacunae + Canaliculi + Gap Junctions</div>
+        <div class="mm-leaf">Osteoclasts ← Monocytes → Howship's → resorption</div>
+      </div>
+      <div class="mm-branch b4">
+        <div class="mm-branch-title">🔷 Compact vs Spongy</div>
+        <div class="mm-leaf">Compact: shaft of long bones → Haversian System</div>
+        <div class="mm-leaf">Spongy: epiphysis → Trabeculae</div>
+        <div class="mm-leaf">4 types of lamellae in Compact</div>
+        <div class="mm-leaf">Volkmann's: transverse canals</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="lec3-tab2" class="tab-content">
+    <div class="zt-header"><div class="zt-emoji">🫒</div><div><div class="zt-title">الزتونة — Bone</div><div class="zt-sub">سكيمات الامتحان</div></div></div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن تسلسل خلايا العظم</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>Pericyte → Osteogenic cell → Osteoblast → Osteocyte</strong> (mature, buried in Lacuna between lamellae)</div></div>
+    </div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن Howship's Lacuna</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text">Site of <strong>Osteoclasts</strong> — function: <strong>bone RESORPTION</strong> (not building) — origin: fusion of Blood Monocytes</div></div>
+    </div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن الفرق بين Osteoblasts وOsteoclasts</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>Osteoblasts → BONE FORMATION</strong> (neg. Golgi image, basophilic cytoplasm) | <strong>Osteoclasts → BONE RESORPTION</strong> (multinucleated, Howship's lacuna, foamy)</div></div>
+    </div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن الصفائح الأربعة في Compact Bone</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>Outer</strong> ← Periosteum | <strong>Inner</strong> ← Endosteum | <strong>Concentric</strong> ← around Haversian Canal | <strong>Interstitial</strong> ← between osteons</div></div>
+    </div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك Canaliculi وظيفتها ايه</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text">Osteocyte processes pass through <strong>Canaliculi</strong> → interconnect via <strong>Gap Junctions</strong> → electrolyte exchange + maintain matrix integrity</div></div>
+    </div>
+  </div>
+
+  <div id="lec3-tab3" class="tab-content">
+    <div class="kp-grid">
+      <div class="kp-card"><div class="kp-num">1</div><div class="kp-badge bl">Cell Sequence</div><div class="kp-text">Pericyte → Osteogenic cell → Osteoblast → <strong>Osteocyte</strong> (stable inside Lacuna)</div></div>
+      <div class="kp-card"><div class="kp-num">2</div><div class="kp-badge or">Howship's Lacuna</div><div class="kp-text">Site of <strong>Osteoclasts</strong> — function: <strong>bone resorption</strong> — origin: fusion of Blood Monocytes</div></div>
+      <div class="kp-card"><div class="kp-num">3</div><div class="kp-badge gr">Canaliculi</div><div class="kp-text">Osteocyte processes pass through <strong>Canaliculi</strong> → communicate via <strong>Gap Junctions</strong> → electrolyte exchange</div></div>
+      <div class="kp-card"><div class="kp-num">4</div><div class="kp-badge ye">4 Lamellae</div><div class="kp-text">Outer ← Periosteum | Inner ← Endosteum | Concentric ← around Haversian | Interstitial ← between osteons</div></div>
+      <div class="kp-card"><div class="kp-num">5</div><div class="kp-badge pk">Golgi Image</div><div class="kp-text">Negative Golgi Image → <strong>Osteoblasts + Plasma cells + Fibroblasts</strong> (all synthetic/secretory cells)</div></div>
+      <div class="kp-card"><div class="kp-num">6</div><div class="kp-badge bl">Bone Hardness</div><div class="kp-text">Hardness due to <strong>Hydroxyapatite + Collagen Type I</strong> — H&amp;E: Acidophilic (collagen)</div></div>
+    </div>
+  </div>
+
+  <div id="lec3-tab4" class="tab-content">
+    <div class="mcq-header">
+      <div class="mcq-stats-row">
+        <div class="mcq-stat">Questions: <span>30</span></div>
+        <div class="mcq-stat">Correct: <span id="lec3-correct">0</span></div>
+        <div class="mcq-stat">Wrong: <span id="lec3-wrong">0</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="lec3-prog"></div></div>
+      </div>
+      <div class="mcq-controls">
+        <button class="ctrl-btn" onclick="revealAll('lec3')">Show All</button>
+        <button class="ctrl-btn primary" onclick="resetMCQ('lec3')">Reset</button>
+      </div>
+    </div>
+    <div id="lec3-mcq-container"></div>
+    <div class="score-board" id="lec3-score"><div class="score-num" id="lec3-score-num"></div><div class="score-msg" id="lec3-score-msg"></div><button class="ctrl-btn primary" onclick="resetMCQ('lec3')" style="margin-top:8px;">Retry</button></div>
+  </div>
+  <!-- MOTIVATIONAL BANNER Ch.4 -->
+  <div style="margin-top:28px;background:linear-gradient(135deg,rgba(250,204,21,0.06),rgba(251,146,60,0.06));border:1px solid rgba(250,204,21,0.2);border-radius:14px;padding:22px 24px;text-align:center;direction:rtl;">
+    <div style="font-size:28px;margin-bottom:8px;">🏆</div>
+    <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#facc15;margin-bottom:8px;">﴿ فَإِنَّ مَعَ الْعُسْرِ يُسْرًا ﴾</div>
+    <div style="font-size:13px;color:#94a3b8;line-height:1.8;">الـ Bone ده أطول فصل — وعديته بجدارة! 💪<br>الـ Haversian System والـ 4 Bone Cells دول نجوم الامتحان — وإنت حافظهم كويس بإذن الله 🌟</div>
+  </div>
+</div>
+
+<!-- ===== CHAPTER 5: MUSCLE ===== -->
+<div id="lec-4" class="lecture-page">
+  <div class="lec-header">
+    <div>
+      <div class="lec-num">Chapter 5</div>
+      <div class="lec-title">Muscle Tissue</div>
+      <div class="lec-desc">Skeletal · Cardiac · Smooth · Sarcomere · Triad · Full Comparison</div>
+    </div>
+  </div>
+  <div class="tab-switch">
+    <button class="tab-btn active" onclick="showTab('lec4',0,this)">📖 Notes</button>
+    <button class="tab-btn" onclick="showTab('lec4',1,this)">🧠 Mind Map</button>
+    <button class="tab-btn" onclick="showTab('lec4',2,this)">🫒 الزتونة</button>
+    <button class="tab-btn" onclick="showTab('lec4',3,this)">⭐ Key Points</button>
+    <button class="tab-btn" onclick="showTab('lec4',4,this)">❓ MCQ</button>
+  </div>
+
+  <div id="lec4-tab0" class="tab-content active">
+    <div class="topic-block orange">
+      <div class="topic-title orange">I — Skeletal Muscle Fibers</div>
+      <div class="info-grid">
+        <div class="info-card"><div class="info-label">Characters</div><div class="info-value"><strong>Striated</strong> · <strong>Voluntary</strong> · Do NOT branch</div></div>
+        <div class="info-card"><div class="info-label">Sites</div><div class="info-value">Muscles attached to skeleton · Eye muscles · Pharynx &amp; Larynx</div></div>
+      </div>
+      <table class="phys-table" style="margin-top:12px;">
+        <tr><th>Feature</th><th>L.S.</th><th>T.S.</th></tr>
+        <tr><td>Length</td><td>Few mm → 30 cm</td><td>—</td></tr>
+        <tr><td>Diameter</td><td>100 µm</td><td>—</td></tr>
+        <tr><td>Shape</td><td>Single elongated cell</td><td>Polyhedral</td></tr>
+        <tr><td>Nuclei</td><td><strong>Multiple, peripheral, flattened oval</strong></td><td>Only seen in some fibers</td></tr>
+        <tr><td>Sarcoplasm</td><td>Acidophilic + transverse striation</td><td>Acidophilic + Myofibrils</td></tr>
+      </table>
+      <div style="margin-top:14px;"><strong style="color:var(--accent2);font-size:13px;">🔬 Myofibrils &amp; Sarcomere:</strong>
+        <ul class="detail-list" style="margin-top:8px;">
+          <li class="hl">Contractile elements longitudinally arranged in sarcoplasm</li>
+          <li><strong>I-band</strong> (light) + <strong>A-band</strong> (dark) alternate</li>
+          <li><strong>H-zone:</strong> light disc in centre of A-band (Myosin only)</li>
+          <li><strong>Z-line:</strong> dark line in centre of I-band (Sarcomere boundary)</li>
+          <li class="hl"><strong>Sarcomere = area between 2 Z-lines</strong> — functional contractile unit — contains whole A-band + 2 halves of I-band</li>
+        </ul>
+        <table class="phys-table" style="margin-top:10px;">
+          <tr><th>Feature</th><th>Thin Filaments (Actin)</th><th>Thick Filaments (Myosin)</th></tr>
+          <tr><td>Extension</td><td>Z-line to border of H-zone</td><td>A-band only (interdigitates with actin)</td></tr>
+          <tr><td>Ends</td><td>One free + one attached to Z-line</td><td><strong>Both ends free</strong></td></tr>
+          <tr><td>Length</td><td>1 µm</td><td>1.5 µm</td></tr>
+        </table>
+      </div>
+      <div style="margin-top:14px;"><strong style="color:var(--accent2);font-size:13px;">⚡ Triad of Tubular System:</strong>
+        <ul class="detail-list" style="margin-top:8px;">
+          <li><strong>Transverse Tubule (T.T.):</strong> Sarcolemma invagination encircling sarcomeres like collars</li>
+          <li><strong>Two Terminal Cisternae:</strong> wide ends of sER on each side of T.T.</li>
+          <li class="hl"><strong>Contraction mechanism:</strong> nerve impulse → T.T. → Terminal Cisternae → release <strong>Ca²⁺</strong> → activate Actin-Myosin → contraction</li>
+        </ul>
+      </div>
+      <div style="margin-top:14px;"><strong style="color:var(--accent2);font-size:13px;">🏗️ CT Components of Skeletal Muscle:</strong>
+        <table class="phys-table" style="margin-top:8px;">
+          <tr><th>Layer</th><th>Type</th><th>Function</th></tr>
+          <tr><td><strong>Epimysium</strong></td><td>Dense CT</td><td>Surrounds whole muscle</td></tr>
+          <tr><td><strong>Perimysium</strong></td><td>Dense CT</td><td>Divides muscle into bundles</td></tr>
+          <tr><td><strong>Endomysium</strong></td><td>Loose CT</td><td>Separates individual fibers</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="topic-block green">
+      <div class="topic-title green">II — Cardiac Muscle Fibers</div>
+      <div class="info-grid">
+        <div class="info-card"><div class="info-label">Characters</div><div class="info-value"><strong>Striated</strong> · <strong>Involuntary</strong> · Branching &amp; anastomosing → cut in various directions</div></div>
+        <div class="info-card"><div class="info-label">Site</div><div class="info-value">Wall of the heart only</div></div>
+      </div>
+      <table class="phys-table" style="margin-top:10px;">
+        <tr><th>Length</th><th>Diameter</th><th>Shape</th><th>Nuclei</th><th>Sarcoplasm</th></tr>
+        <tr><td>100 µm</td><td>25 µm</td><td>Short cylindrical</td><td><strong>Central, oval, 1–2</strong></td><td>Acidophilic + transverse striation</td></tr>
+      </table>
+      <div class="note-box green" style="margin-top:12px;">
+        <strong>EM:</strong> Myofibrils + numerous mitochondria + Intercalated Discs + small Glycogen + Lipid droplets + Lipochrome pigment (↑ with age)<br><br>
+        <strong>Intercalated Discs:</strong> where cell membranes of 2 adjacent cells interdigitate and join<br>
+        1) <strong>Intercellular adhesion</strong> → prevent separation during contraction<br>
+        2) <strong>Intercellular communication</strong> → rapid transmission of nerve impulses between cells<br><br>
+        <strong>Regeneration: Fibrosis</strong> (scar formation) — cardiac muscle cannot regenerate → MI leaves permanent damage
+      </div>
+    </div>
+    <div class="topic-block yellow">
+      <div class="topic-title yellow">III — Smooth Muscle Fibers</div>
+      <div class="info-grid">
+        <div class="info-card"><div class="info-label">Characters</div><div class="info-value"><strong>Non-striated</strong> · <strong>Involuntary</strong> · Do NOT branch</div></div>
+        <div class="info-card"><div class="info-label">Sites</div><div class="info-value">Walls of blood vessels · Viscera (GIT, respiratory)</div></div>
+      </div>
+      <table class="phys-table" style="margin-top:10px;">
+        <tr><th>Length</th><th>Diameter</th><th>Shape</th><th>Nuclei</th><th>Sarcoplasm</th></tr>
+        <tr><td>20 µm (vessels) → 500 µm (pregnant uterus)</td><td>4–10 µm</td><td><strong>Spindle (fusiform)</strong></td><td>Central, oval</td><td>Acidophilic, non-striated</td></tr>
+      </table>
+      <div class="note-box yellow" style="margin-top:10px;"><strong>EM:</strong> irregularly arranged thin + thick + intermediate filaments (NO sarcomeres) | Regeneration: <strong>Mitosis</strong></div>
+    </div>
+    <div class="topic-block">
+      <div class="topic-title">📊 Full Comparison — 3 Muscle Types</div>
+      <table class="phys-table">
+        <tr><th>Feature</th><th>Skeletal</th><th>Cardiac</th><th>Smooth</th></tr>
+        <tr><td>Striation</td><td>Striated</td><td>Striated</td><td>Non-striated</td></tr>
+        <tr><td>Control</td><td><strong>Voluntary</strong></td><td>Involuntary</td><td>Involuntary</td></tr>
+        <tr><td>Branching</td><td>No</td><td><strong>Yes (anastomosing)</strong></td><td>No</td></tr>
+        <tr><td>Length</td><td>few mm – 30 cm</td><td>100 µm</td><td>20–500 µm</td></tr>
+        <tr><td>Diameter</td><td>100 µm</td><td>25 µm</td><td>4–10 µm</td></tr>
+        <tr><td>Nuclei</td><td>Multiple, peripheral, flat oval</td><td>Central, oval, 1–2</td><td>Central, oval, single</td></tr>
+        <tr><td>Intercalated Discs</td><td>Absent</td><td><strong>Present</strong></td><td>Absent</td></tr>
+        <tr><td>Sarcomeres</td><td>Present</td><td>Present</td><td><strong>Absent</strong></td></tr>
+        <tr><td>Regeneration</td><td>Satellite cells</td><td><strong>Fibrosis</strong></td><td>Mitosis</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div id="lec4-tab1" class="tab-content">
+    <div style="text-align:center;margin-bottom:28px;"><div class="mm-center">Muscle Tissue 💪</div></div>
+    <div class="mm-branches">
+      <div class="mm-branch b1">
+        <div class="mm-branch-title">I — Skeletal</div>
+        <div class="mm-leaf">Voluntary + Striated + No branching</div>
+        <div class="mm-leaf">Multiple peripheral flat oval nuclei</div>
+        <div class="mm-leaf">Sarcomere: Z-line to Z-line</div>
+        <div class="mm-leaf">Triad: T.T. + 2 Terminal Cisternae → Ca²⁺</div>
+        <div class="mm-leaf">Regeneration: Satellite cells</div>
+      </div>
+      <div class="mm-branch b2">
+        <div class="mm-branch-title">II — Cardiac</div>
+        <div class="mm-leaf">Involuntary + Striated + Branching</div>
+        <div class="mm-leaf">Central oval nuclei (1–2)</div>
+        <div class="mm-leaf">Intercalated Discs → adhesion + communication</div>
+        <div class="mm-leaf">Numerous mitochondria</div>
+        <div class="mm-leaf">Regeneration: Fibrosis</div>
+      </div>
+      <div class="mm-branch b3">
+        <div class="mm-branch-title">III — Smooth</div>
+        <div class="mm-leaf">Involuntary + Non-striated + No branching</div>
+        <div class="mm-leaf">Central oval nucleus (single)</div>
+        <div class="mm-leaf">Spindle (fusiform) shape</div>
+        <div class="mm-leaf">No sarcomeres — irregular filaments</div>
+        <div class="mm-leaf">Regeneration: Mitosis</div>
+      </div>
+      <div class="mm-branch b4">
+        <div class="mm-branch-title">🔬 Sarcomere</div>
+        <div class="mm-leaf">Between two Z-lines</div>
+        <div class="mm-leaf">I-band (Actin) + A-band (Myosin+Actin)</div>
+        <div class="mm-leaf">H-zone: Myosin only</div>
+        <div class="mm-leaf">Actin: 1µm / Myosin: 1.5µm (both ends free)</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="lec4-tab2" class="tab-content">
+    <div class="zt-header"><div class="zt-emoji">🫒</div><div><div class="zt-title">الزتونة — Muscle</div><div class="zt-sub">سكيمات الامتحان</div></div></div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن Intercalated Discs فين بتوجد</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>Cardiac muscle ONLY</strong> — 2 functions: 1) Intercellular adhesion (prevent separation) 2) Intercellular communication (rapid impulse transmission)</div></div>
+    </div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن تجديد كل نوع عضلة</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>Skeletal → Satellite cells</strong> | <strong>Cardiac → Fibrosis</strong> (scar — no regeneration → MI permanent damage) | <strong>Smooth → Mitosis</strong></div></div>
+    </div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن الـ Sarcomere تعريفه وبيحتوي ايه</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>Area between 2 Z-lines</strong> = functional contractile unit | Contains: <strong>whole A-band + 2 halves of I-band</strong> | Myosin: 1.5µm (both ends free) | Actin: 1µm (one end attached to Z-line)</div></div>
+    </div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن آلية الانقباض عبر الـ Triad</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text">Nerve impulse → <strong>T.T. (Transverse Tubule)</strong> → Terminal Cisternae → release <strong>Ca²⁺</strong> into myofibrils → Actin-Myosin interaction → contraction</div></div>
+    </div>
+    <div class="zt-card">
+      <div class="zt-q"><div class="zt-q-icon">💡</div><div class="zt-q-text">لو سألك عن الفرق بين نواة الثلاث عضلات</div></div>
+      <div class="zt-arrow"><div class="zt-arrow-icon">→</div><div class="zt-arrow-text"><strong>Skeletal: multiple, peripheral, flat oval</strong> | <strong>Cardiac: central, oval, 1–2</strong> | <strong>Smooth: central, oval, single</strong></div></div>
+    </div>
+  </div>
+
+  <div id="lec4-tab3" class="tab-content">
+    <div class="kp-grid">
+      <div class="kp-card"><div class="kp-num">1</div><div class="kp-badge bl">Intercalated Discs</div><div class="kp-text"><strong>Cardiac ONLY</strong> — adhesion + rapid impulse communication between cells</div></div>
+      <div class="kp-card"><div class="kp-num">2</div><div class="kp-badge or">Regeneration</div><div class="kp-text">Skeletal → <strong>Satellite cells</strong> | Cardiac → <strong>Fibrosis</strong> | Smooth → <strong>Mitosis</strong></div></div>
+      <div class="kp-card"><div class="kp-num">3</div><div class="kp-badge gr">Sarcomere</div><div class="kp-text">Between <strong>2 Z-lines</strong> — whole A-band + 2 halves I-band | Myosin: 1.5µm, both ends free | Actin: 1µm, one end attached Z-line</div></div>
+      <div class="kp-card"><div class="kp-num">4</div><div class="kp-badge ye">Nuclei</div><div class="kp-text">Skeletal: <strong>multiple peripheral flat oval</strong> | Cardiac: <strong>central oval 1–2</strong> | Smooth: <strong>central oval single</strong></div></div>
+      <div class="kp-card"><div class="kp-num">5</div><div class="kp-badge pk">Triad</div><div class="kp-text">T.T. + 2 Terminal Cisternae → Ca²⁺ release → contraction | The Ca²⁺ activates Actin-Myosin sliding</div></div>
+      <div class="kp-card"><div class="kp-num">6</div><div class="kp-badge bl">Smooth has NO</div><div class="kp-text">Smooth muscle has <strong>NO sarcomeres, NO myofibrils, NO intercalated discs</strong> — irregular thin + thick + intermediate filaments</div></div>
+    </div>
+  </div>
+
+  <div id="lec4-tab4" class="tab-content">
+    <div class="mcq-header">
+      <div class="mcq-stats-row">
+        <div class="mcq-stat">Questions: <span>30</span></div>
+        <div class="mcq-stat">Correct: <span id="lec4-correct">0</span></div>
+        <div class="mcq-stat">Wrong: <span id="lec4-wrong">0</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="lec4-prog"></div></div>
+      </div>
+      <div class="mcq-controls">
+        <button class="ctrl-btn" onclick="revealAll('lec4')">Show All</button>
+        <button class="ctrl-btn primary" onclick="resetMCQ('lec4')">Reset</button>
+      </div>
+    </div>
+    <div id="lec4-mcq-container"></div>
+    <div class="score-board" id="lec4-score"><div class="score-num" id="lec4-score-num"></div><div class="score-msg" id="lec4-score-msg"></div><button class="ctrl-btn primary" onclick="resetMCQ('lec4')" style="margin-top:8px;">Retry</button></div>
+  </div>
+  <!-- MOTIVATIONAL BANNER Ch.5 — FINAL -->
+  <div style="margin-top:28px;background:linear-gradient(135deg,rgba(244,114,182,0.06),rgba(56,189,248,0.08));border:1px solid rgba(244,114,182,0.25);border-radius:14px;padding:26px 24px;text-align:center;direction:rtl;">
+    <div style="font-size:36px;margin-bottom:10px;">🎉</div>
+    <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:#f472b6;margin-bottom:10px;">أنهيت المذكرة كاملة! بارك الله فيك 🌟</div>
+    <div style="font-family:'Syne',sans-serif;font-size:13px;color:#facc15;margin-bottom:10px;">﴿ وَقُل رَّبِّ زِدْنِي عِلْمًا ﴾</div>
+    <div style="font-size:13px;color:#94a3b8;line-height:1.9;">5 فصول كاملة — 150 سؤال MCQ — كل ده في رأسك دلوقتي 💡<br>راجع اللي غلطت فيه، وكرر الـ MCQ لحد ما تعدل 90%+<br><strong style="color:#e2e8f0;">إنت جاهز للامتحان بإذن الله — توكل على ربك وامشي بثقة 🚀</strong></div>
+  </div>
+</div>
+
+</div><!-- end .main -->
+
+<script>
+// ===== ACCESS SYSTEM (Firebase) =====
+const welcomeMsgs = [
+  { emoji:'🔬', title:'أهلاً بيك!', body:'تم تفعيل مذكرة <strong style="color:#38bdf8;">Histology — BCMS-126</strong> بنجاح! 🎉<br>5 فصول · 150 MCQ · كل حاجة جاهزة.<br><strong style="color:#facc15;">ربنا يوفقك ويسهّل عليك 🤲</strong>' },
+  { emoji:'💙', title:'مرحباً بيك!', body:'بسم الله تبارك الله — ابدأ المذاكرة.<br>من Epithelium لـ Muscle — كل حاجة جاهزة ليك.<br><strong style="color:#4ade80;">نسأل الله السداد والتوفيق 🌿</strong>' },
+  { emoji:'🌟', title:'يا هلا بيك!', body:'العلم نور، وإنت خطوة على الطريق. ✨<br>الـ Histology دي أساس كل المواد الجاية.<br><strong style="color:#fb923c;">نسأل الله أن ينفع بك أمتك. 🤍</strong>' },
+  { emoji:'🎯', title:'يلا بيك!', body:'كل دقيقة بتذاكرها دي استثمار في مستقبلك. 💪<br>إنت قادر تعدي الامتحان ده بتفوق.<br><strong style="color:#38bdf8;">توكل على الله وابدأ بسم الله 📖</strong>' },
+];
+
+function getDeviceId(){
+  let id = localStorage.getItem('fm_device_id');
+  if(!id){
+    id = 'dev_' + Math.random().toString(36).substring(2,10) + '_' + Date.now().toString(36);
+    localStorage.setItem('fm_device_id', id);
+  }
+  return id;
+}
+
+function showPwError(msg){
+  const inp = document.getElementById('pwInput');
+  const err = document.getElementById('pwError');
+  err.textContent = msg;
+  err.classList.add('show');
+  inp.classList.remove('error'); void inp.offsetWidth; inp.classList.add('error');
+  setTimeout(()=>{ inp.classList.remove('error'); }, 500);
+}
+
+function showWelcome(){
+  const msg = welcomeMsgs[Math.floor(Math.random() * welcomeMsgs.length)];
+  const modal = document.createElement('div');
+  modal.style.cssText = 'position:fixed;inset:0;z-index:999999;background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:20px;';
+  modal.innerHTML = `
+    <div style="background:linear-gradient(160deg,#07090f,#0a1020);border:1px solid rgba(56,189,248,0.3);border-radius:22px;max-width:390px;width:100%;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.8);">
+      <div style="height:3px;background:linear-gradient(90deg,#38bdf8,#4ade80,#facc15,#38bdf8);"></div>
+      <div style="padding:36px 28px;text-align:center;direction:rtl;">
+        <div style="font-size:52px;margin-bottom:12px;">${msg.emoji}</div>
+        <div style="font-size:9px;font-weight:700;letter-spacing:4px;color:rgba(56,189,248,0.6);margin-bottom:6px;">FULLMARK · BCMS-126</div>
+        <div style="font-size:22px;font-weight:900;color:#fff;margin-bottom:6px;font-family:'Syne',sans-serif;">${msg.title}</div>
+        <div style="width:40px;height:2px;background:linear-gradient(90deg,transparent,#38bdf8,transparent);margin:0 auto 16px;"></div>
+        <div style="font-size:13px;color:rgba(148,163,184,0.9);line-height:1.9;margin-bottom:20px;">${msg.body}</div>
+        <div style="background:rgba(248,113,113,0.08);border:1px solid rgba(248,113,113,0.3);border-radius:12px;padding:14px 16px;margin-bottom:20px;text-align:right;">
+          <div style="font-size:12px;font-weight:800;color:#f87171;margin-bottom:6px;">⚠️ تنبيه هام</div>
+          <div style="font-size:11px;color:rgba(200,200,200,0.8);line-height:1.9;">
+            🔐 هذا الملف مرخّص لاستخدامك الشخصي فقط<br>
+            ❌ يُمنع منعاً باتاً مشاركة أو نشر هذا الملف<br>
+            🙏 شكراً لدعمك — هذا يساعدنا نكمل في إنتاج المحتوى
+          </div>
+        </div>
+        <button onclick="this.closest('div[style*=fixed]').remove();" style="width:100%;padding:14px;border:none;border-radius:12px;font-size:15px;font-weight:800;cursor:pointer;background:linear-gradient(135deg,#38bdf8,#0ea5e9);color:#000;font-family:'Syne',sans-serif;">
+          🚀 فاهم وهبدأ المذاكرة دلوقتي
+        </button>
+      </div>
+    </div>`;
+  document.body.appendChild(modal);
+}
+
+/* ===== Firebase Connection ===== */
+import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js').then(async ({initializeApp, getApps}) => {
+  const { getFirestore, doc, getDoc, updateDoc, collection, addDoc, serverTimestamp } = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js');
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBRg9YDGiY0gZ-oHF4hI-qK9GA6Xx8YthU",
+    authDomain: "fullmark-admin.firebaseapp.com",
+    projectId: "fullmark-admin",
+    storageBucket: "fullmark-admin.firebasestorage.app",
+    messagingSenderId: "1036699776",
+    appId: "1:1036699776:web:4b9da54b025c309d51fe65"
+  };
+
+  const PRODUCT_NAME = "Histology"; // لازم يطابق بالحرف اسم المادة في الـ Admin Panel
+  const PRODUCT_ID   = "histology"; // لازم يطابق الـ ID اللي هيظهر في جدول "المواد" بالأدمن
+
+  const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const STORAGE_KEY = `fm_unlocked_${PRODUCT_NAME.replace(/\s+/g,'_')}`;
+
+  const lockEl = document.getElementById('lockScreen');
+  const btn = document.getElementById('fmActivateBtn');
+  const inp = document.getElementById('pwInput');
+  const loadingEl = document.getElementById('fmGateLoading');
+
+  function grantAccess(){
+    lockEl.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    showWelcome();
+  }
+
+  // Auto-login لو الجهاز ده مفعّل بالفعل
+  if(localStorage.getItem(STORAGE_KEY)){
+    lockEl.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  } else {
+    document.body.style.overflow = 'hidden';
+  }
+
+  async function handleActivate(){
+    const code = inp.value.trim().toUpperCase();
+    if(!code){ showPwError('من فضلك أدخل الكود'); return; }
+
+    btn.disabled = true; btn.textContent = '⏳ جاري التحقق...'; loadingEl.style.display = 'block';
+    document.getElementById('pwError').classList.remove('show');
+
+    try{
+      const codeRef = doc(db, 'codes', code);
+      const snap = await getDoc(codeRef);
+
+      if(!snap.exists()){ showPwError('❌ الكود غير صحيح'); inp.value=''; return; }
+      const data = snap.data();
+
+      if(data.productName !== PRODUCT_NAME){
+        showPwError('❌ هذا الكود غير مخصص لهذه المادة'); inp.value=''; return;
+      }
+
+      const myDeviceId = getDeviceId();
+
+      if(data.used){
+        if(data.deviceId === myDeviceId){
+          localStorage.setItem(STORAGE_KEY, code);
+          grantAccess();
+        } else {
+          showPwError('⚠️ هذا الكود مفعّل مسبقاً على جهاز آخر — تواصل معنا على تيليجرام');
+          inp.value='';
+        }
+        return;
+      }
+
+      await updateDoc(codeRef, {
+        used: true, deviceId: myDeviceId, usedAt: new Date()
+      });
+      localStorage.setItem(STORAGE_KEY, code);
+      grantAccess();
+
+    }catch(err){
+      console.error(err);
+      showPwError('⚠️ تعذّر الاتصال — تأكد من الإنترنت وحاول تاني');
+    }finally{
+      btn.disabled = false; btn.textContent = 'دخول →'; loadingEl.style.display = 'none';
+    }
+  }
+
+  btn.addEventListener('click', handleActivate);
+  inp.addEventListener('keydown', function(e){ if(e.key === 'Enter') handleActivate(); });
+
+  /* ===== نظام رفع طلب الاشتراك ===== */
+  window.fmFileChanged = function(input){
+    const file = input.files[0];
+    if(!file) return;
+    document.getElementById('fileLabelText').textContent = '✅ ' + file.name;
+    const reader = new FileReader();
+    reader.onload = e => {
+      document.getElementById('subImgThumb').src = e.target.result;
+      document.getElementById('subImgPreview').style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  };
+
+  window.fmSubmitRequest = async function(){
+    const name     = document.getElementById('subName').value.trim();
+    const telegram = document.getElementById('subTelegram').value.trim();
+    const fileInp  = document.getElementById('subReceipt');
+    const errEl    = document.getElementById('subFormError');
+    const sucEl    = document.getElementById('subFormSuccess');
+    const submitBtn = document.getElementById('subSubmitBtn');
+
+    errEl.style.display = 'none';
+    sucEl.style.display = 'none';
+
+    if(!name)     { errEl.textContent = '⚠️ من فضلك أدخل اسمك الكامل'; errEl.style.display='block'; return; }
+    if(!telegram) { errEl.textContent = '⚠️ من فضلك أدخل يوزر تليجرام عشان يوصلك الكود'; errEl.style.display='block'; return; }
+    if(!fileInp.files[0]) { errEl.textContent = '⚠️ من فضلك ارفع صورة الإيصال'; errEl.style.display='block'; return; }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = '⏳ جاري إرسال الطلب...';
+
+    try{
+      // تحويل الصورة لـ Base64 مضغوطة وحفظها في Firestore مباشرة
+      const file = fileInp.files[0];
+      const receiptUrl = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = e => {
+          const img = new Image();
+          img.onload = () => {
+            const MAX = 800;
+            let w = img.width, h = img.height;
+            if(w > MAX || h > MAX){
+              if(w > h){ h = Math.round(h * MAX / w); w = MAX; }
+              else { w = Math.round(w * MAX / h); h = MAX; }
+            }
+            const canvas = document.createElement('canvas');
+            canvas.width = w; canvas.height = h;
+            canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+            resolve(canvas.toDataURL('image/jpeg', 0.75));
+          };
+          img.onerror = reject;
+          img.src = e.target.result;
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+
+      // حفظ الطلب في Firestore
+      await addDoc(collection(db, 'paymentRequests'), {
+        studentName:      name,
+        telegramUsername: telegram,
+        productName:      PRODUCT_NAME,
+        productId:        PRODUCT_ID,
+        receiptUrl,
+        status:           'pending',
+        createdAt:        serverTimestamp()
+      });
+
+      // إشعار تليجرام للأدمن
+      const TG_TOKEN  = '8853979192:AAHmv3NxHKh3QmH-elu1e4NJR4gFOclbsV0';
+      const TG_CHATID = '8275336376';
+      fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({
+          chat_id: TG_CHATID,
+          text: `📩 طلب اشتراك جديد!\n👤 ${name}\n📲 ${telegram}\n📚 ${PRODUCT_NAME}\n\nافتح الأدمن لمراجعة الإيصال والموافقة.`
+        })
+      }).catch(()=>{});
+
+      sucEl.innerHTML = `✅ تم إرسال طلبك بنجاح!<br>هنراجع الإيصال وهيوصلك الكود على تليجرام خلال دقائق بإذن الله 🎉<br><strong style="color:var(--accent);">📲 راجع محادثتك مع @FullmarkEg_bot على تليجرام</strong>`;
+      sucEl.style.display = 'block';
+      submitBtn.style.display = 'none';
+      document.getElementById('subFormWrap').querySelectorAll('input').forEach(i=>i.disabled=true);
+      document.getElementById('fileLabel').style.pointerEvents = 'none';
+
+    }catch(err){
+      console.error(err);
+      errEl.textContent = '⚠️ حصل خطأ أثناء الإرسال — تأكد من الإنترنت وحاول تاني';
+      errEl.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'إرسال الطلب ✉️';
+    }
+  };
+});
+
+// ===== NAVIGATION =====
+function showLecture(idx, btn){
+  document.querySelectorAll('.lecture-page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('lec-'+idx).classList.add('active');
+  btn.classList.add('active');
+  buildPrintArea();
+}
+
+// ===== TABS =====
+function showTab(lecId, tabIdx, btn){
+  const page = document.getElementById('lec-'+lecId.replace('lec',''));
+  if(!page) return;
+  page.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  page.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  const tabs = page.querySelectorAll('.tab-content');
+  if(tabs[tabIdx]) tabs[tabIdx].classList.add('active');
+  btn.classList.add('active');
+}
+
+// ===== MCQ DATA =====
+const mcqData = {
+  lec0: [
+    {q:"Epithelium is characterized by:",o:["Rests on basement membrane separating it from CT","Blood vessels enter between cells but nerves do not","Has abundant intercellular substance","Not subjected to regeneration"],a:0,e:"Epithelium rests on and adheres to a basement membrane separating it from underlying CT. No blood vessels enter, but nerves ramify between cells."},
+    {q:"Simple Cubical Epithelium lines:",o:["Trachea","Medium-sized ducts of exocrine glands","Blood vessels","Stomach"],a:1,e:"Simple Cubical Epithelium: single layer of cubical cells with central rounded nuclei — lines renal tubules and medium-sized gland ducts."},
+    {q:"Fallopian tubes are lined by:",o:["Pseudostratified columnar ciliated epithelium","Simple cubical epithelium","Simple columnar ciliated epithelium","Simple squamous epithelium"],a:2,e:"Fallopian tube and Uterus → Simple Columnar Ciliated Epithelium (NOT pseudostratified). Pseudostratified Ciliated → trachea, bronchi."},
+    {q:"Simple Columnar Secretory Epithelium:",o:["Has cilia on free surface","Lines the stomach","Has nuclei at multiple levels","Is covered with Keratin"],a:1,e:"Simple Columnar Secretory: vacuolated cytoplasm (Mucin dissolution) — specialized in mucous secretion — lines the stomach."},
+    {q:"Stratified Squamous Epithelium:",o:["Is formed of about 30 layers","Lines the trachea","Has columnar cells as the top layer","Has squamous cells as the middle layer"],a:0,e:"Stratified Squamous has about 30 layers: basal columnar + middle polyhedral + top squamous cells."},
+    {q:"The epithelium that changes its structure on distension is:",o:["Transitional","Simple squamous","Stratified squamous keratinized","Stratified squamous non-keratinized"],a:0,e:"Transitional (Urothelium): empty bladder → full thickness (6-8 layers); full bladder → cells slide → 2 layers (basal cubical + top flat)."},
+    {q:"Neuroepithelium:",o:["Its sensory cells have free nerve endings at their UPPER border","Lines the external auditory canal","Its basal cells are supportive cells","Is specialized in perception of sensory stimuli"],a:3,e:"Neuroepithelium is specialized in perceiving sensory stimuli. Sensory cells have free nerve endings at their LOWER border. Found in taste buds and olfactory epithelium."},
+    {q:"Lung alveoli are lined by:",o:["Simple cubical epithelium","Simple squamous epithelium","Pseudostratified columnar","Stratified squamous"],a:1,e:"Lung alveoli → Simple Squamous Epithelium — for efficient gas exchange (thin wall)."},
+    {q:"Glandular epithelium is specialized in:",o:["Perception of sensory stimuli","Covering the body surface","Production of secretions","Transmission of nerve impulses"],a:2,e:"Glandular Epithelium is specialized in production of secretions. Neuroepithelium → sensory stimuli. Covering epithelium → covers/lines."},
+    {q:"A compound branched gland has:",o:["Single unbranched duct + single secretory unit","Single unbranched duct + branched secretory units","Branched duct + branched secretory units","No duct at all"],a:2,e:"Compound Branched Gland: branched duct system + branched secretory units. Simple gland: both unbranched. Simple branched: unbranched duct + branched secretory."},
+    {q:"Pseudostratified columnar ciliated epithelium is found in:",o:["Fallopian tube","Stomach","Trachea and bronchi","Urinary bladder"],a:2,e:"Pseudostratified Ciliated Epithelium → trachea, bronchi, nasal sinuses. Fallopian tube → Simple Columnar Ciliated."},
+    {q:"Sebaceous glands secrete by:",o:["Merocrine","Apocrine","Holocrine","Paracrine"],a:2,e:"Sebaceous glands → Holocrine: whole cell destroyed during secretion → fatty secretion. Mammary → Apocrine. Salivary → Merocrine."},
+    {q:"The basement membrane in Transitional Epithelium is described as:",o:["Thick and well-defined","Ill-defined straight (to allow sliding)","Wavy","Absent"],a:1,e:"Transitional epithelium has a thin ill-defined straight basement membrane — allows cells to slide over each other on distension."},
+    {q:"Which gland produces both mucous and serous secretions?",o:["Parotid gland","Submandibular gland","Sebaceous gland","Thyroid gland"],a:1,e:"Submandibular and Sublingual glands are Mucoserous (produce both). Parotid → serous only. Sebaceous → oily/holocrine."},
+    {q:"In Simple Columnar Absorptive Epithelium, the apical surface shows:",o:["Cilia","Microvilli (Brush Border)","Vacuolated cytoplasm","Goblet cells"],a:1,e:"Simple Columnar Absorptive: specialized in absorption — apical surface has Microvilli (Brush Border by LM) to increase surface area — lines intestine."},
+    {q:"Stratified Squamous Non-Keratinized lines:",o:["Epidermis of skin","Mouth cavity, oesophagus, external auditory canal","Urinary bladder","Trachea"],a:1,e:"Non-Keratinized → wet surfaces of body openings: mouth, oesophagus, external auditory canal, ear drum. Keratinized → dry skin (epidermis)."},
+    {q:"The inner cell mass (Blastomere) gives rise to:",o:["Trophoblast only","All four germ layers","Outer covering of blastocyst","Placenta only"],a:1,e:"The Blastomere (inner cell mass) proliferates and differentiates into Ectoderm, Mesoderm, Endoderm, and Genito-urinary ridge."},
+    {q:"Endocrine glands are formed when:",o:["Epithelial cells remain connected to surface","Epithelial cells lose connection with surface","Epithelial cells multiply on the surface","Connective tissue penetrates epithelium"],a:1,e:"Endocrine glands → cells lose connection with surface → no duct. Exocrine → remain connected → have duct."},
+    {q:"Which structure is specialized in perception of taste?",o:["Olfactory epithelium","Taste buds","External auditory canal","Nasal sinuses"],a:1,e:"Taste buds (tongue) = Neuroepithelium specialized in taste perception. Olfactory epithelium = smell (roof of nose)."},
+    {q:"Parotid gland is classified as:",o:["Mucous only","Serous only","Mucoserous","Waxy"],a:1,e:"Parotid gland → Serous only (watery, rich in enzymes). Submandibular + Sublingual → Mucoserous. Minor salivary → Mucous."},
+    {q:"The mesoderm gives rise to:",o:["Skin and nervous tissue","Muscle, CT, bone, cartilage and blood","Respiratory and GI systems","Genital and urinary systems"],a:1,e:"Mesoderm → muscle, connective tissue, bone, cartilage, blood. Ectoderm → skin + nervous. Endoderm → respiratory + GI."},
+    {q:"Transitional Epithelium lines:",o:["Stomach and intestine","Renal pelvis, ureter, urinary bladder, prostatic urethra","Fallopian tube and uterus","Trachea and bronchi"],a:1,e:"Transitional (Urothelium) → Renal pelvis + Ureter + Urinary bladder + Prostatic urethra. These all ALWAYS have Transitional Epithelium."},
+    {q:"Basal cells of Neuroepithelium function to:",o:["Perceive stimuli","Support sensory cells","Regenerate other cell types","Secrete neurotransmitters"],a:2,e:"Basal cells of Neuroepithelium: small pyramidal on BM — function: regenerate sensory and supporting cells."},
+    {q:"Mammary glands secrete by:",o:["Merocrine","Apocrine","Holocrine","Endocrine"],a:1,e:"Mammary glands → Apocrine: apical part of cell destroyed during secretion. Sebaceous → Holocrine. Salivary → Merocrine."},
+    {q:"Simple Squamous Epithelium is found in:",o:["Stomach","Fallopian tube","Blood vessels and heart","Trachea"],a:2,e:"Simple Squamous → blood vessels + heart + lung alveoli + small gland ducts. Thin flat cells for exchange/filtration."},
+    {q:"What is the correct description of Pseudostratified Columnar Epithelium?",o:["Multiple layers — all touch basement membrane","Single layer — all cells touch BM — crowded → nuclei at different levels","Multiple layers — only basal cells touch BM","Cells float freely above BM"],a:1,e:"Pseudostratified = single layer — all cells touch BM — but crowding during development → some cells short/squeezed → nuclei at different levels → false stratification appearance."},
+    {q:"Mucous glands produce:",o:["Watery secretion rich in enzymes","Fatty secretion","Viscid secretion poor in enzymes","Waxy secretion"],a:2,e:"Mucous glands → viscid mucous poor in enzymes (e.g. Goblet cells, minor salivary glands). Serous → watery rich in enzymes (Parotid, Pancreas)."},
+    {q:"The four basic tissues of the body are:",o:["Epithelial, Connective, Muscle, Blood","Epithelial, Connective, Muscle, Nervous","Bone, Cartilage, Blood, Muscle","Epithelial, Bone, Gland, Nerve"],a:1,e:"4 Basic Tissues: 1) Epithelial 2) Connective 3) Muscle 4) Nervous — each with specific structure and function."},
+    {q:"Goblet cells are a type of:",o:["Simple squamous epithelium","Simple columnar secretory epithelium (specialized)","Pseudostratified non-ciliated","Transitional epithelium"],a:1,e:"Goblet cells = specialized Simple Columnar Secretory cells — secrete mucus — found in intestine and also in Pseudostratified Ciliated of trachea."},
+    {q:"Esophagus is lined by:",o:["Transitional epithelium","Simple columnar secretory","Stratified squamous non-keratinized","Pseudostratified columnar ciliated"],a:2,e:"Esophagus → Stratified Squamous Non-Keratinized (wet surface opening to skin). Also: mouth, external auditory canal, ear drum."}
+  ],
+  lec1: [
+    {q:"Which cell synthesizes CT fibers?",o:["Mast cells","Plasma cells","Fibroblasts","Reticular cells"],a:2,e:"Fibroblasts synthesize ALL CT fibers + Matrix. They are the most common CT cells and responsible for CT growth and wound healing."},
+    {q:"White collagenous fibers stained with Van Gieson appear:",o:["Yellow","Red","Blue","Black"],a:1,e:"Van Gieson: white collagenous fibers → Red. Yellow elastic fibers → Yellow."},
+    {q:"The cell derived from Blood Monocyte is:",o:["Macrophage","Fibroblast","Mast cell","Chondrocyte"],a:0,e:"Macrophages originate from Blood Monocytes. Main function: phagocytosis of bacteria. Also secrete Collagenase and Elastase."},
+    {q:"Reticular CT is found in:",o:["Umbilical cord","Tendons","Stroma of spleen","Cornea"],a:2,e:"Reticular CT: reticular fibers + reticular cells (modified fibroblasts) — found in stroma of liver, spleen, and lymph nodes."},
+    {q:"CT Matrix contains:",o:["Glycoproteins","Is firm in consistency","Phospholipids","Secreted by Chondroblasts"],a:0,e:"CT Matrix is soft (not firm). Contains Glycoproteins + Proteoglycans + Proteins — secreted by Fibroblasts (not Chondroblasts)."},
+    {q:"Plasma cells:",o:["Originate from Pericytes","Are found in lymphatic organs","Secrete Heparin","Have acidophilic cytoplasm"],a:1,e:"Plasma cells are found in lymphatic organs. They originate from B Lymphocytes (via plasmablasts) and secrete antibodies (humoral immunity)."},
+    {q:"Yellow elastic fibers are digested by:",o:["Pepsin","Collagenase","Elastase","Hyaluronidase"],a:2,e:"Yellow elastic fibers are digested by Elastase only. They are NOT affected by boiling (unlike collagenous fibers which convert to gelatin)."},
+    {q:"Fat cells (Adipocytes) function to:",o:["Secrete antibodies","Store lipids (energy) and heat insulation","Secrete Heparin","Perform phagocytosis"],a:1,e:"Fat cells (Adipocytes): store energy as fat + heat insulation. Sudan III: orange. H&E: signet ring appearance."},
+    {q:"Mast cells secrete:",o:["Collagen + Elastin","Histamine + Heparin","Antibodies","Collagenase + Elastase"],a:1,e:"Mast cells secrete: Histamine (allergy/inflammation) and Heparin (anticoagulant). Located in mucosa of GIT and respiratory tract."},
+    {q:"Mucoid CT is found in:",o:["Liver and spleen","Tendons","Umbilical cord and tooth pulp","Cornea"],a:2,e:"Mucoid CT: umbilical cord + pulp of teeth. Contains young fibroblasts + soft matrix rich in Mucin and Hyaluronic acid."},
+    {q:"Brown adipose CT produces:",o:["Energy storage only","Rapid heat production in cold","Antibodies","Collagen fibers"],a:1,e:"Brown adipose CT: rapid heat production in cold — due to numerous mitochondria. Found in newborns and adults (mediastinum, between scapulae)."},
+    {q:"Reticular fibers stained with Silver appear:",o:["Red","Yellow","Black","Blue"],a:2,e:"Silver stain colors reticular fibers Black (argyrophilic). H&E does NOT stain them. Sites: stroma of liver, spleen, lymph nodes."},
+    {q:"White Fibrous CT (Regular) is found in:",o:["Sclera and Periosteum","Cornea and Tendons","Liver and Spleen","Around blood vessels"],a:1,e:"White Fibrous CT Regular: Cornea + Tendons (regular parallel bundles). Irregular: Sclera, Perichondrium, Periosteum."},
+    {q:"The fresh color of elastic fibers is:",o:["White","Red","Yellow","Green"],a:2,e:"Yellow elastic fibers are yellow in fresh state — thin, long, highly refractile — branch and may form elastic membranes."},
+    {q:"The mother cell of all CT cells is:",o:["Fibroblast","Macrophage","UMC (Undifferentiated Mesenchymal Cell)","Mast cell"],a:2,e:"UMC = mother cell of ALL CT cells. Fibroblast originates from Pericytes (which come from UMCs). Macrophage from Monocytes."},
+    {q:"Eosinophils migrate to CT in:",o:["Acute infections","Allergy","Chronic infections","Fractures"],a:1,e:"Eosinophils → allergy | Neutrophils → acute infections | Monocytes + Lymphocytes → chronic infections."},
+    {q:"White collagenous fibers convert to Gelatin by:",o:["Digestion with Elastase","Boiling","Staining with Silver","Treatment with Van Gieson"],a:1,e:"White collagenous fibers convert to Gelatin by boiling. Yellow elastic fibers are NOT affected by boiling."},
+    {q:"Toluidine Blue stains Mast cells with color:",o:["Red","Blue","Purple (Metachromasia)","Black"],a:2,e:"Toluidine Blue stains Mast cells Purple (Metachromasia) — due to sulfated glycosaminoglycans (Heparin) in their granules."},
+    {q:"Ver-Hoff's stain colors elastic fibers:",o:["Red","Yellow","Blue","Black"],a:3,e:"Ver-Hoff's stain → Yellow elastic fibers appear Black. Van Gieson → Yellow for elastic fibers."},
+    {q:"Yellow Elastic CT is found in:",o:["Cornea and Tendons","Arterial walls, Trachea, Back ligaments","Umbilical cord","Stroma of liver"],a:1,e:"Yellow Elastic CT: arterial walls + trachea + back ligaments. Contains regular elastic fibers + fibroblasts."},
+    {q:"Which cell forms the Foreign Body Giant Cell?",o:["Fibroblast","Mast cell","Macrophage","Plasma cell"],a:2,e:"Macrophages fuse together to form Foreign Body Giant Cell — used to engulf large foreign bodies too big for a single macrophage."},
+    {q:"Loose CT is found around:",o:["Tendons","Blood vessels","Cornea","Spleen"],a:1,e:"Loose (Ordinary) CT: around blood vessels + submucosa of GIT. Contains collagenous + elastic fibers + fibroblasts + fat + macrophages."},
+    {q:"Origin of Fibroblasts:",o:["Blood Monocytes","B Lymphocytes","Pericytes from UMCs","Plasma cells"],a:2,e:"Fibroblasts originate from Pericytes which develop from UMCs. They are the most common and numerous CT cells."},
+    {q:"The Cart-Wheel nucleus is found in:",o:["Macrophages","Fibroblasts","Plasma cells","Mast cells"],a:2,e:"Cart-Wheel nucleus (special chromatin arrangement) = Plasma cells ONLY. Also have: eccentric rounded nucleus + deep basophilic cytoplasm + negative Golgi image."},
+    {q:"Mallory Trichrome stains collagenous fibers:",o:["Red","Blue","Yellow","Black"],a:1,e:"Mallory Trichrome → White collagenous fibers = Blue. Van Gieson → Red. Both identify collagenous fibers but with different colors."},
+    {q:"Trypan Blue (vital stain) is used to identify:",o:["Plasma cells","Mast cells","Macrophages","Fat cells"],a:2,e:"Trypan Blue is a vital stain used to identify Macrophages in CT."},
+    {q:"The key difference between White and Brown Adipose:",o:["Location only","White has more blood supply","Brown produces heat; White stores energy","White cells are smaller"],a:2,e:"Brown Adipose: rapid heat production (numerous mitochondria). White Adipose: energy storage + heat insulation. Brown has MORE blood supply."},
+    {q:"Origin of Osteoclasts:",o:["Fibroblast","Fusion of Blood Monocytes","Osteogenic cell","UMC"],a:1,e:"Osteoclasts originate from FUSION of multiple Blood Monocytes — function: bone resorption."},
+    {q:"Type III collagen forms:",o:["Elastic fibers","Reticular fibers","White collagenous in bone","Tendon fibers"],a:1,e:"Collagen Type III forms Reticular fibers (in stroma of liver, spleen, lymph nodes). Type I → bone, tendons, white fibrocartilage. Type II → hyaline + elastic fibrocartilage."},
+    {q:"Loose CT contains:",o:["Fibroblasts + Plasma cells","Fibroblasts + Fat cells + Macrophages","Fat cells only","Reticular cells only"],a:1,e:"Loose CT contains: Fibroblasts + Fat cells + Macrophages + collagenous and elastic fibers + matrix rich in hyaluronic acid."}
+  ],
+  lec2: [
+    {q:"Cartilage:",o:["Has rich blood supply","Is a type of CT Proper","Has firm matrix","Is surrounded by Periosteum"],a:2,e:"Cartilage is a type of CT — POOR in blood supply — firm/rubbery matrix — surrounded by PERICHONDRIUM (not Periosteum)."},
+    {q:"Chondrocytes receive their nutrition from:",o:["Lacunae","Canaliculi","Periosteum","Perichondrium"],a:3,e:"Chondrocytes are nourished by DIFFUSION from the Perichondrium — cartilage itself has no blood vessels."},
+    {q:"Matrix of Hyaline Cartilage stains:",o:["Highly vascular","Contains Collagen Type I","Acidophilic","Homogenous Basophilic"],a:3,e:"Hyaline Cartilage matrix: homogenous Basophilic (H&E) — due to Chondroitin Sulphate. Contains Collagen Type II (not I)."},
+    {q:"Yellow Elastic Fibrocartilage is found in:",o:["Long bones of foetal skeleton","Ear pinna","Semilunar cartilage of knee","Bodies of vertebrae"],a:1,e:"Yellow Elastic Fibrocartilage: Ear Pinna + External Auditory Canal. Stained black with Ver-Hoff's stain."},
+    {q:"Hyaline Cartilage is:",o:["Yellow and opaque","Pale blue and translucent","White and opaque","Pink and translucent"],a:1,e:"Hyaline Cartilage is pale blue and translucent — most abundant type — found in articular, costal, foetal bones, respiratory passages."},
+    {q:"White Fibrocartilage is present in the semilunar cartilage of knee.",o:["TRUE","FALSE — it is Hyaline","FALSE — it is Yellow Elastic","FALSE — no cartilage in knee"],a:0,e:"TRUE — White Fibrocartilage (Fibrocartilage) is found in: Intervertebral discs + Symphysis pubis + Semilunar cartilage of knee (Meniscus)."},
+    {q:"Inner Chondrogenic Layer of Perichondrium contains:",o:["Osteoblasts","Chondroblasts","Osteoclasts","Fibroblasts only"],a:1,e:"Inner Chondrogenic Layer contains Chondroblasts (flat cells) — they secrete matrix then become Chondrocytes during growth and healing."},
+    {q:"Cell Nests in Hyaline Cartilage contain:",o:["2 cells only","4 cells only","8 cells only","2, 4, or 8 cells"],a:3,e:"Cell Nests in Hyaline Cartilage contain 2, 4, or 8 cells — Mature Chondrocytes can divide → form nests."},
+    {q:"Ver-Hoff's stain colors Yellow Elastic Fibrocartilage:",o:["Red","Blue","Black","Yellow"],a:2,e:"Ver-Hoff's stain → elastic fibers in Yellow Elastic Fibrocartilage appear Black."},
+    {q:"White Fibrocartilage has NO:",o:["Chondrocytes","Matrix","Perichondrium","Collagen"],a:2,e:"White Fibrocartilage is the ONLY type without Perichondrium — nourished from blood vessels of surrounding collagenous bundles."},
+    {q:"Articular Cartilage is of type:",o:["Hyaline","Yellow Elastic","White Fibro","None"],a:0,e:"Articular Cartilage = Hyaline Cartilage — covers joint surfaces. Also Hyaline: costal, respiratory passages, foetal long bones."},
+    {q:"Collagen Type II is found in:",o:["White Fibrocartilage only","Hyaline + Yellow Elastic Fibrocartilage","Bone only","Tendons and Cornea"],a:1,e:"Collagen Type II: Hyaline Cartilage + Yellow Elastic Fibrocartilage. Type I: White Fibrocartilage + Bone."},
+    {q:"Symphysis Pubis contains:",o:["Hyaline Cartilage","Yellow Elastic Fibrocartilage","White Fibrocartilage","All types"],a:2,e:"Symphysis Pubis + Intervertebral discs + Semilunar cartilage of knee → all contain White Fibrocartilage."},
+    {q:"Function of Outer Fibrous Layer of Perichondrium:",o:["Cartilage regeneration","Muscle attachment + cartilage nourishment","Chondrocyte production","Phagocytosis"],a:1,e:"Outer Fibrous Layer of Perichondrium: muscle attachment + blood supply and nourishment of the cartilage."},
+    {q:"H&E stains White Fibrocartilage matrix as:",o:["Basophilic","Acidophilic","Metachromatic","Not stained"],a:1,e:"White Fibrocartilage → H&E: Acidophilic — due to abundant Collagen Type I (same as bone and white CT fibers)."},
+    {q:"Costal Cartilage is of type:",o:["Yellow Elastic","White Fibro","Hyaline","Mixed"],a:2,e:"Costal Cartilage = Hyaline Cartilage — connects ribs to sternum. Also Hyaline: articular, respiratory passages, foetal bones."},
+    {q:"Intervertebral Discs contain:",o:["Hyaline Cartilage","Yellow Elastic Fibrocartilage","White Fibrocartilage","No cartilage"],a:2,e:"Intervertebral Discs (between vertebrae) contain White Fibrocartilage — along with Symphysis Pubis and Semilunar cartilage."},
+    {q:"Young Chondrocytes differ from Mature Chondrocytes by:",o:["Being deeper in cartilage","Having rounded shape","Located under Perichondrium with flat shape","Forming Cell Nests"],a:2,e:"Young Chondrocytes: superficial (under Perichondrium) + flat shape + more basophilic. Mature: deep, rounded, in Cell Nests."},
+    {q:"Cartilage is poorly vascularized — it is nourished by:",o:["Diffusion from Perichondrium","From nerves","From Lacunae","From Canaliculi"],a:0,e:"Cartilage is nourished by DIFFUSION from Perichondrium — this is why cartilage heals slowly when damaged."},
+    {q:"A distinctive feature of Hyaline Cartilage:",o:["Acidophilic matrix","No Perichondrium","Most elastic","Pale blue translucent"],a:3,e:"Hyaline Cartilage distinctive feature: pale blue, translucent color — visually distinguishes it from other cartilage types."},
+    {q:"Function of Inner Chondrogenic Layer of Perichondrium:",o:["Muscle attachment","Blood supply","Cartilage regeneration during growth and healing","Phagocytosis"],a:2,e:"Inner Chondrogenic Layer → regenerates cartilage during growth and healing by converting Chondroblasts to Chondrocytes."},
+    {q:"Hyaline Cartilage in respiratory passages is found in:",o:["Trachea only","Trachea and bronchi","Lung alveoli","Terminal bronchioles"],a:1,e:"Hyaline Cartilage in respiratory passages: Trachea + Bronchi + Laryngeal cartilages."},
+    {q:"In White Fibrocartilage, Chondrocytes are arranged in:",o:["Cell Nests (2,4,8)","Rows (single or in pairs) between collagen bundles","Random groups","Single superficial layer"],a:1,e:"In White Fibrocartilage: Chondrocytes in rows (single or pairs) inside lacunae between collagenous bundles — NOT Cell Nests."},
+    {q:"Long bones of foetal skeleton are made of:",o:["White Fibrocartilage","Yellow Elastic Fibrocartilage","Hyaline Cartilage","Compact Bone"],a:2,e:"Foetal long bones start as Hyaline Cartilage → then undergo ossification. This is Endochondral Ossification."},
+    {q:"Chondroblasts are located in:",o:["Deep cartilage","Inner Chondrogenic Layer of Perichondrium","Outer Fibrous Layer","Lacunae"],a:1,e:"Chondroblasts are found in the Inner Chondrogenic Layer of Perichondrium — they secrete matrix then become Chondrocytes."},
+    {q:"Chondroitin Sulphate in Hyaline Cartilage provides:",o:["Complete rigidity","Limited flexibility","Red color","Calcium attraction"],a:1,e:"Chondroitin Sulphate (Proteoglycan) in Hyaline Cartilage provides limited flexibility along with its rigidity."},
+    {q:"Yellow Elastic Fibrocartilage is distinguished by:",o:["White + Acidophilic","Yellow + high elasticity + Ver-Hoff's Black","Pale blue + Cell Nests","No Perichondrium"],a:1,e:"Yellow Elastic Fibrocartilage: yellow color + high elasticity + Ver-Hoff's stain: Black (elastic fibers)."},
+    {q:"Hyaline Cartilage is found in:",o:["Ear pinna","Articular and Costal Cartilage","Symphysis Pubis","Intervertebral Discs"],a:1,e:"Hyaline Cartilage sites: Articular cartilage + Costal cartilage + Respiratory passages + Foetal long bones."},
+    {q:"In White Fibrocartilage, Chondrocytes are nourished from:",o:["Perichondrium","Blood vessels of surrounding collagenous bundles","Lacunae only","Synovial fluid"],a:1,e:"In White Fibrocartilage (no Perichondrium): Chondrocytes nourished from blood vessels within the surrounding collagenous bundles."},
+    {q:"Outer Fibrous Layer of Perichondrium is composed of:",o:["Mucoid CT","White Fibrous CT rich in blood vessels","Chondroblasts","Elastic fibers"],a:1,e:"Outer Fibrous Layer of Perichondrium: White Fibrous CT rich in blood vessels → muscle attachment + blood supply."}
+  ],
+  lec3: [
+    {q:"Bone:",o:["Has poor blood supply","Is a type of CT Proper","Has hard matrix","Is surrounded by Perichondrium"],a:2,e:"Bone is CALCIFIED CT — rich in blood vessels — hard matrix — surrounded by PERIOSTEUM (not Perichondrium)."},
+    {q:"Periosteum is formed of:",o:["Outer fibrous + inner chondrogenic layers","Outer elastic + inner osteogenic layers","Outer osteogenic + inner bone-resorbing layers","Outer fibrous + inner osteogenic layers"],a:3,e:"Periosteum: Outer Fibrous Layer (white fibrous CT rich in vessels) + Inner Osteogenic Layer (osteogenic cells for growth and healing)."},
+    {q:"Osteocytes:",o:["Have deep basophilic cytoplasm + negative Golgi image","Are present inside Howship's Lacunae","Have long processes through Canaliculi","Synthesize organic component of bone matrix"],a:2,e:"Osteocytes: single inside Lacunae between lamellae. Processes pass through Canaliculi → Gap Junctions → electrolyte exchange. Function: maintain matrix integrity."},
+    {q:"Inner Circumferential Lamellae of Compact Bone are located:",o:["Under Periosteum","Near Endosteum","Around Haversian Canal","Between osteons"],a:1,e:"Inner Circumferential Lamellae: under and parallel to the Endosteum. Outer Circumferential: under Periosteum."},
+    {q:"Cancellous Bone is characterized by:",o:["Solid with no holes","Haversian System as structural unit","Found in young embryonic bone","Regular lamellae"],a:2,e:"Cancellous (Spongy) Bone: many holes (bone marrow spaces), irregular trabeculae, NO Haversian System. Found in: epiphysis of long bones, embryonic bone, bodies of vertebrae."},
+    {q:"Hardness of bone matrix is due to:",o:["Chondroitin Sulphate only","Hydroxyapatite + Collagen Type I","Collagen Type II","Hyaluronic Acid"],a:1,e:"Bone hardness: Hydroxyapatite crystals (Ca + P) + Collagen Type I. H&E: Acidophilic (collagen)."},
+    {q:"Osteoblasts:",o:["Originate from Blood Monocytes","Are present inside Howship's Lacunae","Have negative Golgi image + deep basophilic cytoplasm","Cause bone resorption"],a:2,e:"Osteoblasts: deep basophilic cytoplasm + negative Golgi image — synthesize organic component of bone matrix + help calcification."},
+    {q:"Origin of Osteoclasts:",o:["Pericytes","Osteogenic cells","Fusion of Blood Monocytes","Chondroblasts"],a:2,e:"Osteoclasts originate from FUSION of multiple Blood Monocytes — large, irregular, multinucleated, Howship's Lacuna."},
+    {q:"Haversian System is the structural unit of:",o:["Spongy Bone","Compact Bone","Cartilage","Periosteum"],a:1,e:"Haversian System (Osteon) = structural and functional unit of Compact (Ivory) Bone. Spongy Bone has Trabeculae (no Haversian System)."},
+    {q:"Volkmann's Canals in Compact Bone are:",o:["Parallel to longitudinal axis","Transverse/oblique connecting Haversian canals","Contain muscle tendons","Larger than Haversian canals"],a:1,e:"Volkmann's Canals: transverse/oblique — connect Haversian canals to each other and to Periosteum and Endosteum."},
+    {q:"Endosteum lines:",o:["External surface of bone","Internal surface of bone","Only vertebral bodies","Articular cartilage"],a:1,e:"Endosteum lines the internal surface of bone (medullary cavity) — similar in structure to Inner Osteogenic Layer of Periosteum."},
+    {q:"Function of Osteocytes:",o:["Synthesize new matrix","Regenerate blood vessels","Maintain integrity of bone matrix","Bone resorption"],a:2,e:"Osteocytes function: MAINTAIN INTEGRITY of bone matrix — communicate via Gap Junctions through Canaliculi."},
+    {q:"Origin of Osteoblasts:",o:["Osteogenic cells","Blood Monocytes","Fibroblasts","Chondroblasts"],a:0,e:"Osteoblasts originate from Osteogenic cells (which come from Pericytes, which come from UMCs)."},
+    {q:"Compact Bone is found in:",o:["Epiphysis of long bones","Shaft (diaphysis) of long bones","Centre of flat bones","Embryonic bone"],a:1,e:"Compact Bone: shaft of long bones + outer covering of vertebrae/ribs + outer and inner plates of flat skull bones."},
+    {q:"Inorganic component of Bone Matrix includes:",o:["Hyaluronic acid","Hydroxyapatite (Ca + P)","Collagen only","Large amounts of Chondroitin Sulphate"],a:1,e:"Inorganic component: Hydroxyapatite (Calcium + Phosphorus) + small amounts of Na, Mg, Citrate, Fe."},
+    {q:"Shape of Osteogenic Cells:",o:["Large multinucleated","Flat with flat central nucleus","Round with granules","Branched with Pseudopodia"],a:1,e:"Osteogenic cells: flat shape + flat central nucleus + pale basophilic cytoplasm. Located in Periosteum and Endosteum."},
+    {q:"Haversian Canal:",o:["Transverse — connects osteons","Parallel to longitudinal axis — contains blood vessels","Contains Osteoclasts only","Surrounded by 2-3 lamellae"],a:1,e:"Haversian Canal: parallel to longitudinal axis of bone — contains loose CT rich in blood vessels and nerves."},
+    {q:"Interstitial Lamellae in Compact Bone:",o:["Located under Periosteum","Surround Haversian Canal","Located between osteons","Located above Endosteum"],a:2,e:"Interstitial Lamellae: between osteons — remnants of old osteons that were partially resorbed."},
+    {q:"Shape of Osteoclasts:",o:["Small oval","Branched spindle","Large irregular + multinucleated + Brush Border","Flat mononucleated"],a:2,e:"Osteoclasts: large, irregular, multinucleated, foamy cytoplasm, Brush Border facing bone surface — in Howship's Lacuna."},
+    {q:"Inner Osteogenic Layer of Periosteum contains:",o:["Osteocytes","Chondroblasts","Osteogenic cells","Osteoclasts"],a:2,e:"Inner Osteogenic Layer: Osteogenic cells → become Osteoblasts during bone growth and fracture healing."},
+    {q:"Bone Matrix stains with H&E as:",o:["Basophilic","Acidophilic","Metachromatic","Not stained"],a:1,e:"Bone Matrix: Acidophilic with H&E — due to Collagen Type I."},
+    {q:"How many lamellae surround the Haversian Canal?",o:["1-3","4-20","21-30","30+"],a:1,e:"4-20 concentric (spiral) lamellae surround each Haversian Canal in one Osteon."},
+    {q:"Osteoclasts cause bone resorption by secreting:",o:["Collagenase only","Carbonic acid + Collagenase","Heparin + Histamine","Chondroitin Sulphate"],a:1,e:"Osteoclasts: secrete carbonic acid (dissolves mineral salts) + Collagenase (digests organic matrix) → bone resorption."},
+    {q:"Endosteum is similar in structure to:",o:["Outer Fibrous Layer of Periosteum","Inner Osteogenic Layer of Periosteum","Outer Fibrous Layer of Perichondrium","Osteoblast layer"],a:1,e:"Endosteum = similar to Inner Osteogenic Layer of Periosteum — both contain osteogenic cells."},
+    {q:"Spongy Bone contains:",o:["Haversian Systems","Irregular trabeculae","Regular lamellae","Volkmann's Canals"],a:1,e:"Spongy Bone: branching and anastomosing Trabeculae separated by bone marrow spaces — NO Haversian System."},
+    {q:"Origin of Osteocytes:",o:["Blood Monocytes","Directly from Osteogenic cells","Mature Osteoblasts buried in matrix","Chondroblasts"],a:2,e:"Osteocytes = mature Osteoblasts that became surrounded by matrix and buried in Lacunae between bone lamellae."},
+    {q:"Compact Bone is also called:",o:["Spongy Bone","Ivory Bone","Woven Bone","Lamellar Bone"],a:1,e:"Compact Bone = Ivory Bone (due to its hardness and solid appearance)."},
+    {q:"Haversian Canal contains:",o:["Bone marrow","Loose CT + blood vessels","Osteoclasts only","Osteocytes only"],a:1,e:"Haversian Canal contains Loose CT rich in blood vessels and nerves — runs parallel to bone's long axis."},
+    {q:"Function of Outer Fibrous Layer of Periosteum:",o:["Bone regeneration after fracture","Osteoblast production","Muscle attachment + nourishment of bone cells","Phagocytosis"],a:2,e:"Outer Fibrous Layer: muscle attachment + blood supply to osteocytes (nourishment)."},
+    {q:"Howship's Lacuna is the site of:",o:["Osteocytes","Osteoblasts","Osteoclasts","Osteogenic cells"],a:2,e:"Howship's Lacuna = cavity on inner bone surface where Osteoclasts sit during bone resorption."}
+  ],
+  lec4: [
+    {q:"Myofibrils:",o:["Each I-band divided at centre by H-zone","Alternate light and dark bands","Each A-band divided by dark Z-line","Contractile elements arranged transversely"],a:1,e:"Myofibrils: alternate I-band (light) and A-band (dark). H-zone = light disc in centre of A-band. Z-line = dark line in centre of I-band."},
+    {q:"Distance between two successive Z-lines is called:",o:["H-zone","Centromere","Sarcomere","I-band"],a:2,e:"Sarcomere = area between 2 Z-lines = functional contractile unit. Contains whole A-band + 2 halves of I-band."},
+    {q:"Depolarization wave reaches the depth of striated muscle via:",o:["Sarcoplasmic reticulum","Sarcolemma","Transverse Tubules (T.T.)","Mitochondria"],a:2,e:"Transverse Tubules carry the action potential to the interior of the muscle fiber → Terminal Cisternae → Ca²⁺ release."},
+    {q:"Intercalated Discs are found in:",o:["Skeletal muscle only","Cardiac muscle only","Skeletal and Cardiac","Smooth muscle only"],a:1,e:"Intercalated Discs: Cardiac muscle ONLY. Functions: intercellular adhesion + intercellular communication (rapid impulse transmission)."},
+    {q:"Smooth Muscle Fibers:",o:["Are striated","Have peripheral flattened oval nuclei","Have sarcomeres","Are fusiform (spindle) in shape"],a:3,e:"Smooth muscle: non-striated, involuntary, fusiform (spindle) shape, central oval nucleus, NO sarcomeres, NO intercalated discs."},
+    {q:"Skeletal Muscle Fibers have nuclei that are:",o:["Central mononucleated","Central binucleated","Multiple peripheral flat oval","Absent"],a:2,e:"Skeletal muscle: MULTIPLE + PERIPHERAL + FLATTENED OVAL nuclei — key distinguishing feature under microscope."},
+    {q:"Cardiac Muscle is characterized by:",o:["Voluntary, non-branching","Involuntary, branching and anastomosing","Involuntary, non-striated","Non-striated, voluntary"],a:1,e:"Cardiac muscle: INVOLUNTARY + STRIATED + BRANCHING and anastomosing + Intercalated Discs → found in wall of heart only."},
+    {q:"Thin Filaments (Actin) have a length of:",o:["0.5 µm","1 µm","1.5 µm","2 µm"],a:1,e:"Thin Filaments (Actin): 1 µm | Thick Filaments (Myosin): 1.5 µm. Myosin: both ends free. Actin: one end attached to Z-line."},
+    {q:"Thick Filaments (Myosin) are characterized by:",o:["One free end + one attached to Z-line","Both ends free","Both ends attached","Extend from Z-line to H-zone"],a:1,e:"Myosin (thick filaments): BOTH ENDS FREE — found in A-band only — interdigitate with free ends of actin."},
+    {q:"Epimysium:",o:["Separates individual muscle fibers","Divides muscle into bundles","Surrounds the whole muscle","Thin fiber around single fiber"],a:2,e:"Epimysium = dense CT surrounding the WHOLE muscle from outside. Perimysium = bundles. Endomysium = individual fibers."},
+    {q:"Terminal Cisternae release during contraction:",o:["Na⁺","K⁺","Ca²⁺","Mg²⁺"],a:2,e:"Terminal Cisternae release Ca²⁺ → activates Actin-Myosin interaction → muscle contraction."},
+    {q:"Cardiac Muscle regenerates by:",o:["Satellite cells","Mitosis","Fibrosis (scar)","From Pericytes"],a:2,e:"Cardiac Muscle CANNOT regenerate → heals by Fibrosis (fibrous scar). This is why myocardial infarction causes permanent damage."},
+    {q:"Diameter of Skeletal Muscle Fiber:",o:["25 µm","4-10 µm","100 µm","500 µm"],a:2,e:"Skeletal: 100 µm diameter | Cardiac: 25 µm | Smooth: 4-10 µm. Lengths: Skeletal few mm-30 cm; Cardiac 100 µm; Smooth 20-500 µm."},
+    {q:"Sarcomere contains:",o:["I-band only","Whole A-band + 2 halves I-band","Z-line only","H-zone only"],a:1,e:"Sarcomere = whole A-band + half I-band from each side (between 2 Z-lines)."},
+    {q:"Smooth Muscle Fibers regenerate by:",o:["Satellite cells","Fibrosis","Mitosis","No regeneration"],a:2,e:"Smooth Muscle regenerates by MITOSIS. Skeletal → Satellite cells. Cardiac → Fibrosis."},
+    {q:"Skeletal Muscle is:",o:["Involuntary + branching","Voluntary + non-branching","Involuntary + non-striated","Voluntary + branching"],a:1,e:"Skeletal muscle: VOLUNTARY + STRIATED + does NOT branch. Found in muscles attached to skeleton, eye muscles, pharynx and larynx."},
+    {q:"The Triad of Tubular System consists of:",o:["3 T.T. + 1 cisterna","1 T.T. + 2 Terminal Cisternae","2 T.T. + 1 Terminal Cisterna","3 Terminal Cisternae"],a:1,e:"Triad = 1 Transverse Tubule (T.T.) + 2 Terminal Cisternae (one on each side of T.T.) → hence 'Triad' (3 components)."},
+    {q:"H-zone in Sarcomere contains:",o:["Actin only","Myosin only","Both Actin and Myosin","Neither Actin nor Myosin"],a:1,e:"H-zone = central light zone within A-band — contains MYOSIN ONLY (no actin overlap here)."},
+    {q:"Smooth Muscle is found in:",o:["Muscles attached to skeleton","Wall of heart","Walls of blood vessels + viscera","Eye muscles"],a:2,e:"Smooth muscle: walls of blood vessels + viscera (GIT, respiratory system, uterus). Arranged in bundles or layers."},
+    {q:"Perimysium in Skeletal Muscle:",o:["Surrounds each individual fiber","Divides muscle into bundles (fascicles)","Surrounds whole muscle","Attaches muscle to bone"],a:1,e:"Perimysium = dense CT dividing skeletal muscle into bundles (fascicles). Epimysium = whole muscle. Endomysium = individual fibers."},
+    {q:"Lipochrome pigment in Cardiac Muscle:",o:["Decreases with age","Increases with age","Has no change with age","Is not found in cardiac muscle"],a:1,e:"Lipochrome (lipofuscin) pigment in Cardiac muscle INCREASES with age — considered a 'wear and tear' pigment."},
+    {q:"The functional contractile unit of Skeletal Muscle is:",o:["Myofibril","Sarcomere","Sarcolemma","Endomysium"],a:1,e:"Sarcomere = functional contractile unit (between 2 Z-lines). Myofibril = made of many sarcomeres in series."},
+    {q:"Actin (thin) filaments:",o:["Both ends free","One end free + one attached to Z-line","Both ends attached","Located in I-band only"],a:1,e:"Actin (thin) filaments: ONE end free + ONE end attached to Z-line. Extend from Z-line to border of H-zone."},
+    {q:"Cardiac Muscle is different from Skeletal by:",o:["Voluntary vs involuntary only","Has Intercalated Discs + branches + central nuclei","Has more nuclei","Has no striations"],a:1,e:"Cardiac vs Skeletal: Cardiac = involuntary + branching + central nuclei (1-2) + Intercalated Discs. Skeletal = voluntary + no branch + multiple peripheral nuclei."},
+    {q:"Endomysium is:",o:["Dense CT surrounding whole muscle","Dense CT dividing muscle into bundles","Loose CT separating individual fibers","Fibrous covering of tendons"],a:2,e:"Endomysium = Loose CT separating and surrounding individual muscle fibers (the finest layer)."},
+    {q:"Smooth Muscle Fibers have NO:",o:["Actin filaments","Central oval nucleus","Sarcomeres or Myofibrils","Mitochondria"],a:2,e:"Smooth muscle has NO sarcomeres + NO myofibrils (organized) + NO intercalated discs. Has irregular thin+thick+intermediate filaments."},
+    {q:"Length of Cardiac Muscle Fiber:",o:["Few mm to 30 cm","100 µm","20-500 µm","25 µm"],a:1,e:"Cardiac muscle fiber length: 100 µm | Diameter: 25 µm | Shape: short cylindrical | Nuclei: central oval 1-2."},
+    {q:"Z-line is located at:",o:["Centre of A-band","Border of H-zone","Centre of I-band (sarcomere boundary)","Centre of H-zone"],a:2,e:"Z-line: dark line at CENTRE of I-band — marks the boundary of each Sarcomere. Sarcomere = Z-line to Z-line."},
+    {q:"Skeletal Muscle regenerates via:",o:["Fibrosis","Mitosis","Satellite cells","No regeneration"],a:2,e:"Skeletal muscle regenerates via SATELLITE CELLS (myogenic stem cells between sarcolemma and basement membrane)."},
+    {q:"Which is TRUE about Smooth Muscle?",o:["Striated","Has sarcomeres","Involuntary + non-striated + fusiform","Voluntary + non-branching"],a:2,e:"Smooth Muscle: INVOLUNTARY + NON-STRIATED + FUSIFORM shape + central oval nucleus + NO sarcomeres + regeneration by mitosis."}
+  ]
+};
+
+/* =========================================================
+   PRINT VERSION — builds a printable page for the CURRENTLY
+   OPEN chapter, containing only the Content (شرح) section and
+   the MCQ bank WITHOUT answers/explanations, plus a note that
+   the remaining sections (Mind Map / الزتونة / Key Points) are
+   only available in the full version on the site.
+========================================================= */
+function buildPrintArea(){
+  const activePage = document.querySelector('.lecture-page.active');
+  if(!activePage) return;
+  const num = activePage.id.replace('lec-','');
+  const lecKey = 'lec' + num;
+
+  const numLabel = activePage.querySelector('.lec-num') ? activePage.querySelector('.lec-num').textContent : '';
+  const titleLabel = activePage.querySelector('.lec-title') ? activePage.querySelector('.lec-title').textContent : '';
+  const descLabel = activePage.querySelector('.lec-desc') ? activePage.querySelector('.lec-desc').textContent : '';
+
+  const contentEl = document.getElementById(lecKey + '-tab0');
+  const contentHTML = contentEl ? contentEl.innerHTML : '';
+
+  const letters = ['A','B','C','D'];
+  const quiz = mcqData[lecKey] || [];
+  const quizHTML = quiz.map((q,i)=>`
+    <div class="print-mcq-item">
+      <div class="print-q">${i+1}. ${q.q}</div>
+      <div class="print-opts">
+        ${q.o.map((opt,idx)=>`<div class="print-opt">${letters[idx]}. ${opt}</div>`).join('')}
+      </div>
+    </div>`).join('');
+
+  document.title = `FullMark — ${titleLabel || 'Histology'} (طباعة)`;
+
+  let el = document.getElementById('printArea');
+  if(!el){ el = document.createElement('div'); el.id = 'printArea'; document.body.appendChild(el); }
+  el.innerHTML = `
+    <div class="print-watermark">FullMark</div>
+    <div class="print-signature">✍︎ FullMark Team &nbsp; 𝓕𝓾𝓵𝓵𝓜𝓪𝓻𝓴</div>
+
+    <div class="print-header">
+      <div class="print-brand">FullMark — Study Guide</div>
+      <h1>General Histology — BCMS-126</h1>
+      <div class="print-sub">${numLabel}${numLabel && titleLabel ? ' — ' : ''}${titleLabel}${descLabel ? '<br>' + descLabel : ''}</div>
+    </div>
+
+    <div class="print-section">
+      <h2 class="print-h2">📖 الشرح (Content)</h2>
+      <div class="print-note">📌 النسخة دي للمذاكرة السريعة فقط. باقي الأقسام (🧠 الخريطة الذهنية · 🫒 الزتونة · ⭐ أهم النقاط) متاحة كاملة على موقع FullMark.</div>
+      ${contentHTML}
+    </div>
+
+    <div class="print-section">
+      <h2 class="print-h2">❓ بنك الأسئلة (بدون إجابات)</h2>
+      ${quizHTML}
+    </div>
+  `;
+}
+
+function printLecture(){
+  buildPrintArea();
+  setTimeout(function(){ window.print(); }, 60);
+}
+
+// ===== MCQ ENGINE =====
+const mcqState = {};
+function initMCQ(lid) {
+  const data = mcqData[lid];
+  if (!data) return;
+  mcqState[lid] = { answered:0, correct:0, wrong:0, total:data.length, done:[] };
+  data.forEach(()=>mcqState[lid].done.push(false));
+  renderMCQ(lid);
+}
+function renderMCQ(lid){
+  const data = mcqData[lid];
+  const container = document.getElementById(lid+'-mcq-container');
+  if(!container) return;
+  container.innerHTML='';
+  data.forEach((q,qi)=>{
+    const letters=['A','B','C','D'];
+    const opts=q.o.map((op,oi)=>
+      `<div class="option" id="${lid}-q${qi}-opt${oi}" onclick="selectOption('${lid}',${qi},${oi})">
+        <div class="opt-l">${letters[oi]}</div>
+        <span class="opt-text">${op}</span>
+      </div>`).join('');
+    container.innerHTML+=`
+      <div class="mcq-q" id="${lid}-q${qi}">
+        <div class="q-top">
+          <div class="q-num">${qi+1}</div>
+          <div class="q-text">${q.q}</div>
+        </div>
+        <div class="options">${opts}</div>
+        <div class="expl" id="${lid}-q${qi}-expl">💡 ${q.e}</div>
+      </div>`;
+  });
+  updateProg(lid);
+}
+function selectOption(lid,qi,oi){
+  const state=mcqState[lid];
+  if(!state||state.done[qi]) return;
+  state.done[qi]=true;
+  const q=mcqData[lid][qi];
+  const qEl=document.getElementById(lid+'-q'+qi);
+  const chosenOpt=document.getElementById(lid+'-q'+qi+'-opt'+oi);
+  const correctOpt=document.getElementById(lid+'-q'+qi+'-opt'+q.a);
+  const expl=document.getElementById(lid+'-q'+qi+'-expl');
+  correctOpt.classList.add('correct-a');
+  if(oi!==q.a){
+    chosenOpt.classList.add('wrong-a');
+    qEl.classList.add('wrong');
+    state.wrong++;
+    document.getElementById(lid+'-wrong').textContent=state.wrong;
+  } else {
+    qEl.classList.add('correct');
+    state.correct++;
+    document.getElementById(lid+'-correct').textContent=state.correct;
+  }
+  expl.classList.add('show');
+  state.answered++;
+  updateProg(lid);
+  if(state.answered===state.total) showScore(lid);
+}
+function updateProg(lid){
+  const state=mcqState[lid];
+  if(!state) return;
+  const pct=(state.answered/state.total)*100;
+  const prog=document.getElementById(lid+'-prog');
+  if(prog) prog.style.width=pct+'%';
+}
+function revealAll(lid){
+  const data=mcqData[lid];
+  const state=mcqState[lid];
+  if(!data||!state) return;
+  data.forEach((q,qi)=>{
+    if(state.done[qi]) return;
+    state.done[qi]=true;
+    state.answered++;
+    document.getElementById(lid+'-q'+qi+'-opt'+q.a).classList.add('correct-a');
+    document.getElementById(lid+'-q'+qi+'-expl').classList.add('show');
+  });
+  updateProg(lid);
+  showScore(lid);
+}
+function resetMCQ(lid){
+  document.getElementById(lid+'-score').classList.remove('show');
+  document.getElementById(lid+'-correct').textContent='0';
+  document.getElementById(lid+'-wrong').textContent='0';
+  initMCQ(lid);
+}
+function showScore(lid){
+  const state=mcqState[lid];
+  const pct=Math.round((state.correct/state.total)*100);
+  const board=document.getElementById(lid+'-score');
+  document.getElementById(lid+'-score-num').textContent=pct+'%';
+  let msg='';
+  if(pct>=90) msg='🏆 Excellent! Ready for the exam';
+  else if(pct>=75) msg='✅ Very Good! Review wrong answers';
+  else if(pct>=60) msg='📖 Review the chapter again';
+  else msg='💪 Keep going — review and retry بإذن الله';
+  document.getElementById(lid+'-score-msg').textContent=msg;
+  board.classList.add('show');
+}
+
+// ===== ATHKAR =====
+const athkar=[
+  {cat:"أذكار الصباح",text:"أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ",rep:1,goal:1},
+  {cat:"أذكار الصباح",text:"اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ النُّشُورُ",rep:1,goal:1},
+  {cat:"التسبيح",text:"سُبْحَانَ اللَّهِ",rep:33,goal:33},
+  {cat:"التحميد",text:"الْحَمْدُ لِلَّهِ",rep:33,goal:33},
+  {cat:"التكبير",text:"اللَّهُ أَكْبَرُ",rep:34,goal:34},
+  {cat:"الاستغفار",text:"أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ",rep:100,goal:100},
+  {cat:"الصلاة على النبي",text:"اللَّهُمَّ صَلِّ وَسَلِّمْ عَلَى نَبِيِّنَا مُحَمَّدٍ",rep:10,goal:10},
+  {cat:"لا إله إلا الله",text:"لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",rep:10,goal:10},
+  {cat:"الدعاء",text:"اللَّهُمَّ اجْعَلْنِي مِمَّنْ يَنْتَفِعُ بِعِلْمِهِ وَيُعَمِّلُ بِهِ",rep:1,goal:1},
+  {cat:"التوكل",text:"حَسْبِيَ اللَّهُ وَنِعْمَ الْوَكِيلُ",rep:7,goal:7}
+];
+let athIdx=0,athCount=0,athOpen=false;
+function toggleAthkar(){
+  const p=document.getElementById('athkarPanel');
+  athOpen=!athOpen;
+  p.style.display=athOpen?'block':'none';
+  setTimeout(()=>{p.style.opacity=athOpen?'1':'0';},10);
+  if(athOpen) loadAthkar();
+}
+function loadAthkar(){
+  const a=athkar[athIdx];
+  document.getElementById('athkarText').textContent=a.text;
+  document.getElementById('athkarCategory').textContent=a.cat;
+  document.getElementById('athkarGoalLabel').textContent=`الهدف: ${a.goal} مرة`;
+  athCount=0;
+  updateRing();
+  document.getElementById('completeBanner').style.display='none';
+  document.getElementById('athkarStatusMsg').textContent='اضغط سبّح للبدء 🤲';
+}
+function updateRing(){
+  const a=athkar[athIdx];
+  document.getElementById('athkarCount').textContent=athCount;
+  const pct=Math.min(athCount/a.goal,1);
+  document.getElementById('progressRing').style.strokeDashoffset=150-(150*pct);
+}
+function incrementCount(){
+  const a=athkar[athIdx];
+  if(athCount<a.goal){
+    athCount++;
+    updateRing();
+    const msgs=['أحسنت 👏','بارك الله فيك 🤍','استمر 💪','واصل 🌟','رائع ✨'];
+    document.getElementById('athkarStatusMsg').textContent=msgs[Math.floor(Math.random()*msgs.length)];
+    if(athCount>=a.goal){
+      document.getElementById('completeBanner').style.display='block';
+      document.getElementById('athkarStatusMsg').textContent='🌟 اكتملت — جزاك الله خيراً!';
+    }
+  }
+}
+function nextAthkar(){athIdx=(athIdx+1)%athkar.length;loadAthkar();}
+function resetCount(){athCount=0;updateRing();document.getElementById('completeBanner').style.display='none';document.getElementById('athkarStatusMsg').textContent='أعد البدء 🤲';}
+
+// ===== INIT =====
+window.addEventListener("DOMContentLoaded",()=>{
+  ['lec0','lec1','lec2','lec3','lec4'].forEach(initMCQ);
+  buildPrintArea();
+});
+</script>
+</body>
+</html>
