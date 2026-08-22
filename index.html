@@ -183,7 +183,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   body::before{display:none !important;}
   #lockScreen, #subModal, .header, .nav-wrap, .main, .print-fab,
   button[onclick="toggleAthkar()"], #athkarPanel{display:none !important;}
-  #printArea{display:block !important; max-width:none; line-height:1.6; position:relative;}
+  #printArea{display:block !important; max-width:none; line-height:1.6; position:relative; z-index:1;}
 
   /* Re-scope all theme colors to print-safe (dark-on-white) values.
      Since every piece of chapter content (tables, notes, highlighted
@@ -196,17 +196,18 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     --accent:#0f766e; --accent2:#b45309; --accent3:#15803d; --accent4:#a16207; --accent5:#a3175e;
   }
 
-  /* faint logo watermark — a real <img> element (not a CSS
-     background) since some mobile/WebView print engines silently
-     drop background-image on print; an <img> always renders. It's
-     centered once within the full document, not fixed, so it can
-     never overlap or duplicate onto text. */
-  .print-watermark-img{
-    position:absolute; top:50%; left:50%;
-    transform:translate(-50%,-50%) rotate(-12deg);
-    width:260px; opacity:0.07; z-index:0; pointer-events:none;
+  /* logo watermark — fixed so it repeats on every printed page, sits behind the text */
+  .print-watermark{
+    display:block; position:fixed; top:50%; left:50%;
+    width:340px; max-width:none;
+    transform:translate(-50%,-50%) rotate(-18deg);
+    opacity:.14; z-index:0; pointer-events:none;
   }
-  #printArea > *{position:relative; z-index:1;}
+  .print-watermark img{
+    width:100%; display:block;
+    image-rendering:-webkit-optimize-contrast;
+    image-rendering:crisp-edges;
+  }
 
   .print-header{text-align:center; margin-bottom:18px; padding-bottom:14px; border-bottom:2px solid #0f766e;}
   .print-logo{width:38px; height:auto; margin:0 auto 8px;}
@@ -1807,7 +1808,7 @@ function buildPrintArea(){
   let el = document.getElementById('printArea');
   if(!el){ el = document.createElement('div'); el.id = 'printArea'; document.body.appendChild(el); }
   el.innerHTML = `
-    <img class="print-watermark-img" src="data:image/png;base64,${FM_LOGO_B64}" alt="">
+    <div class="print-watermark"><img src="data:image/png;base64,${FM_LOGO_B64}" alt=""></div>
 
     <div class="print-header">
       <img class="print-logo" src="data:image/png;base64,${FM_LOGO_B64}" alt="FullMark">
